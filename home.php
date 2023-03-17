@@ -2,7 +2,7 @@
     include(".\pageparts\login_verification.php");
     $infoArray=verificationLogin();
     if ($infoArray["Successful"]==false){
-        header("Location:index.php");
+        header("Location:index.php");;;;;;
     };
 ?>
 

@@ -29,8 +29,8 @@
             <li class="nav-li logo">IFORUM</li>
             <li class="nav-li center">Home</li>
             
-            <a><li class="nav-li">Already a member?</li></a>
-            <a><li class="nav-li sign-up">Sign-up</li></a>
+            <a><li class="nav-li">Not a member?</li></a>
+            <a href="sign_up.php"><li class="nav-li sign-up">Join UTBM</li></a>
         </ul>
     </nav>
     <h1 class="title-h1">UTBM PROJECT</h1>

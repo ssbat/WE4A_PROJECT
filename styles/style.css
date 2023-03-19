@@ -18,6 +18,10 @@ body{
     /* margin:0 1em; */
     
 }
+a:visited {
+    color: white;
+    text-decoration: none;
+}
 .logo{
     justify-self: flex-start;
     flex-grow: 1;
@@ -71,6 +75,7 @@ body{
     border-radius: 8px;
     width: 15em;
 }
+
 .note{
     color: #2d2d2d;
     font-size: 0.9em;
@@ -91,4 +96,19 @@ body{
 .btn-submit:hover{
     background-color: #52389e;
     transition: 0.5s;
+}
+.info-div label{
+    display: block;
+}
+#birthday{
+    height: 3em;
+    width: 18.8em;
+
+}
+form small{
+    display: block;
+    color: red;
+}
+.success{
+    color: lightgreen;
 }

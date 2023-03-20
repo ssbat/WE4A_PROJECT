@@ -1,4 +1,6 @@
 <?php 
+    include("pageparts/connect.php");
+    $conn=connect_db();
     include(".\pageparts\login_verification.php");
     $infoArray=verificationLogin();
     if ($infoArray["Successful"]==true){
@@ -32,7 +34,7 @@
             <a><li class="nav-li">Not a member?</li></a>
             <a href="sign_up.php"><li class="nav-li sign-up">Join UTBM</li></a>
         </ul>
-    </nav>
+    </nav> 
     <h1 class="title-h1">UTBM PROJECT</h1>
     <form class="sign-in-form" method="post">
         <h3 class="title-h3">
@@ -40,9 +42,9 @@
         </h3>
         <?php if($infoArray["Attempted"]){
             ?>
-            <p> <?php echo $infoArray["Error"]?></p>
+            <p> <?php echo "<small class='error'>".$infoArray['Error']." </small>"?></p>
         <?php }?>
-        <input type="text" placeholder="Username" name="username" for="username" class="sign-in-input">
+        <input type="text" placeholder="Username" name="email" for="username" class="sign-in-input">
         <input  type="password" placeholder="Password" name="password"  class="sign-in-input">
         <p class="note">Password must be at least 8 characters</p>
         <button class="btn-submit" type="submit">Submit</button>

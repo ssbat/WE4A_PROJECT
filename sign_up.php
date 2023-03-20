@@ -35,7 +35,7 @@
     <form class="sign-in-form" name="Form" method="post" action="#"  onsubmit="return validateForm()">
         <h3 class="title-h3">
             Sign up with your username and password
-        </h3>
+        </h3> 
         <?php if($inserted){
             ?>
             <p> <?php echo "<p class='success'>$inserted </p>"?></p>

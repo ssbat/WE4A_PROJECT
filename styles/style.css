@@ -41,7 +41,7 @@ a:visited {
     padding: .5em;
 
 }
-.title-h1{
+.title-h1{ 
     text-align: center;
     color: rgb(233, 197, 197);
     font-family: 'Holtwood One SC', serif;
@@ -105,10 +105,29 @@ a:visited {
     width: 18.8em;
 
 }
-form small{
+form small,.error{
     display: block;
     color: red;
 }
 .success{
     color: lightgreen;
+}
+
+.error{
+    font-size:large;
+}
+
+
+
+
+
+
+.btn-signout{
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
 }

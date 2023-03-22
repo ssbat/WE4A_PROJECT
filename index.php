@@ -4,7 +4,8 @@
     include(".\pageparts\login_verification.php");
     $infoArray=verificationLogin();
     if ($infoArray["Successful"]==true){
-        header("Location:home.php");
+        header("Location:home.php?userid=".$useridConnected);
+        
     };
 ?>
 

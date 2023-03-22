@@ -4,8 +4,11 @@
     include(".\pageparts\login_verification.php");
     if (!isset($_POST["logout"])){
         $infoArray=verificationLogin();
+        
         if ($infoArray["Successful"]==false){
             header("Location:index.php");
+    
+        
     }
     }else{
         if ($_POST["logout"]=="OK"){
@@ -17,6 +20,9 @@
           header("Location:index.php");
         }
     }
+
+    $useridPage=$_GET["userid"];
+
     
 ?>
 
@@ -49,6 +55,7 @@
             </form>
         </ul>
     </nav>
-    <h1 class="title-h1"><?php echo "Welcome ".$_COOKIE['FirstName'] ?></h1>
+    
+    <?php include("pageparts/DisplayMyPost.php") ?>
 </body>
 </html>

@@ -1,7 +1,7 @@
 <?php 
 
     function verificationLogin(){
-        global $conn;
+        global $conn,$FirstName,$useridConnected; 
         $error=NULL;
         if (isset($_POST["email"]) and isset($_POST["password"])){
             
@@ -35,8 +35,11 @@
                 setcookie('email', $email, time()+3600*24, '/', '', false, true);
                 setcookie('password', $password, time()+3600*24, '/', '', false, true);
                 $row = $stm->fetch();
-                setcookie('FirstName',$row["First_Name"] , time()+3600*24, '/', '', false, true);
+                $FirstName=$row["First_Name"];
+                $useridConnected=$row["ID"];
+                // setcookie('FirstName',$row["First_Name"] , time()+3600*24, '/', '', false, true);
                 setcookie('LastName',$row["Last_Name"] , time()+3600*24, '/', '', false, true);
+                
                 // setcookie('LastName',$row["Last_Name"] , time()+3600*24, '/', '', false, true);
 
 

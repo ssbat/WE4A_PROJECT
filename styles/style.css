@@ -1,12 +1,14 @@
 body{
     /* background-color: #6e3eff; */
     height:100%;
-    background-image: url("../images/bg.jpg")
+    box-sizing: border-box;
+
+    background-image: url("../images/bg.jpg");
+    margin: 0;
 
 }
 
 .nav-div{
-    /* display: flex; */
     color: white;
 }
 .nav-ul{
@@ -33,8 +35,6 @@ a:visited {
 .center{
     justify-self: center;
     flex-grow: 1;
-
-    /* justify-self: center; */
 }
 
 .sign-up{
@@ -47,7 +47,8 @@ a:visited {
 .main{
     display: grid;
     grid-template-columns: 70% 30%;
-    margin-left: 1em;
+    background-color: white;
+    margin: 0;
 }
 .title-h1{ 
     text-align: center;
@@ -152,14 +153,6 @@ form small,.error{
     margin: 0 auto;
     width: fit-content;
 }
-
-/* .text-area{
-    /* font-size: 1em; */
-    /* width: 18em;
-    height: 10em;
-
-  
-} */ 
 .btn-post{
     display: block;
     text-align: center;
@@ -186,6 +179,10 @@ hr{
     /* border: .5px solid white; */
     border-radius: 8px;
     margin:2em 0em;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
 }
 /*Display My Post begin */
 .title-post{
@@ -195,70 +192,112 @@ hr{
 }
 
 .content{
-    color: white;
     margin: 0;
-    font-size: 1.2em;
+    font-size: 1.1em;
+    color: #125d9e;
+
 
 }
 
 .author{
-    color: rgb(235, 184, 42);
     margin: 0.2em 0;
     font-weight: bold;
     font-size: 1em;
+color: rgb(40, 161, 70);
+
 }
 .time{
-    color: rgb(194, 155, 47);
+    color: #999;
     margin-left: 0.1em;
     font-size: medium;
 
 }
 
-.post-comment{
-    /* border: 1px  solid yellow; */
-}
-.reponse{
-    color: greenyellow;
-}
-.comment-user{
-    color: rgb(239, 243, 10);
 
-}
-
-
-
-.tweet-header {
+.post-header {
     display: flex;
     align-items: center;
-  }
-
-  .tweet-avatar {
+}
+.post-avatar {
     width: 50px;
     height: 50px;
     border-radius: 50%;
     margin-right: 10px;
-  }
+}
 
-  .tweet-username {
-    font-weight: bold;
-    margin-right: 5px;
-    color: rgb(255, 255, 255);
+.post-username {
+font-weight: bold;
+margin-right: 5px;
+color: rgb(40, 161, 70);
+}
 
-  }
+.post-handle {
+color: #999;
+}
 
-  .tweet-handle {
-    color: #999;
-  }
-
-  .tweet-body {
+.post-body{
     margin-top: 10px;
-    color: white;
-    /* margin: 0; */
     font-size: 1.2em;
+    color: #0275d8;
+}
+
+
+
+.like-edit-bar {
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+    /* border-bottom: 1px solid #ddd; */
+    padding: 10px;
+    width: 100%;
   }
 
-  .tweet-media {
-    margin-top: 10px;
-    max-width: 100%;
-    height: auto;
+  .like-button {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: #999;
+    font-size: 0.8em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    /* width: 33.3333%; */
+    text-align: center;
   }
+
+  .like-button:hover {
+    background-color: #f9f9f9;
+  }
+
+  /* .edit-button {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: #999;
+    font-size: 0.8em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 50%;
+    text-align: center;
+  } */
+
+  .edit-button:hover {
+    background-color: #f9f9f9;
+  }
+
+  .edit-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 126, 255, 0.3);
+  }
+
+
+.edit{
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}

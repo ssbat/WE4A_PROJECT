@@ -48,7 +48,7 @@ include("pageparts/connect.php");
             </ul>
     </nav>
     <h1 class="title-h1">Home Page</h1>
-    <div class="main">
+    <div class="main" >
         <div>
             <?php include("./pageparts/DisplayHome.php") ?>
         </div>

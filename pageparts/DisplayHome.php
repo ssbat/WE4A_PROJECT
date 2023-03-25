@@ -12,44 +12,44 @@ foreach($stm as $row2){
     $content=$row2["content"];
     ?>
     
-        <div class="post">
-        <div class="tweet-header">
-        <img class="tweet-avatar" src="https://via.placeholder.com/50x50" alt="Avatar">
-        <div>
-          <div class="tweet-username"><?php echo $firstname." ".$lastname."<span class='time'>●3min ago</span>" ?></div>
-          <!-- <div class="tweet-handle">@johndoe</div> -->
+    <div class="post">
+        <div class="post-header">
+            <img class="post-avatar" src="https://via.placeholder.com/50x50" alt="Avatar">
+            <div>
+            <div class="post-username"><?php echo $firstname." ".$lastname ?></div>
+            <div class="post-handle"><span >●3min ago</span></div>
+            </div>
         </div>
-      </div>
-      <div class="tweet-body">
-      <?php echo $content?>
-          </div>
-        <!-- <p class="author"></p>
-            <h3 class="title-post"><?php echo $titre?></h3>
-            <p class="content"><?php echo $content?></p>
-            <hr>
-            <h3 class="title-post reponse">Reponses:</h3> -->
+       <div class="post-body">
+            <?php echo $content?>
+        </div>
+        <div class="like-edit-bar">
+            <div class="like-button">Like</div>
+            <div class="like-button">comments</div>
+            <?php
+            if ($useridConnected==$row2["user_id"]){
+            ?>
+            <form class="like-button" method="get" action="./pageparts/editPost.php">
+                <input type="hidden" name="postID"value= <?php echo $row2["id"] ?>  >
+                <button class="edit" >Edit</button>
+            </form>
+            <?php };?>
+        </div>
 
-
-            <div class="comments">
+        <hr>
+        <div class="comments">
             <?php 
             
                 $postid=$row2["id"];
                 include("./pageparts/DisplayComments.php")
             ?>                
-                <!-- <div >Old comments</div>
-                    <div class="comment-info">
-
-                    </div>
-                    <div class="comment-content">
-
-                </div> -->
-                <form method="post" class="post-comment" action="./pageparts/processing_comment.php">
-                    <input  name="comment" >
-                    <input name="post-id" value=<?php echo $row2["id"] ?> type="hidden">
-                    <button type="submit">Post comment</button>
-                </form>
-            </div>
+            <form method="post" class="post-comment" action="./pageparts/processing_comment.php">
+                        <input  name="comment" >
+                        <input name="post-id" value=<?php echo $row2["id"] ?> type="hidden">
+                        <button type="submit">Post comment</button>
+            </form>
         </div>
+    </div>
         
         <?php }
        

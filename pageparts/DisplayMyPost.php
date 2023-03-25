@@ -4,9 +4,9 @@
 $sql2="SELECT * FROM users WHERE id=".$useridPage;
 $stm2=$conn->query($sql2);
 $result=$stm2->fetch();
-// $result=$stm2
 $lastname=$result["Last_Name"];
 $firstname=$result["First_Name"];
+// $result=$stm2
 
 
 $sql="SELECT * FROM post WHERE user_id=".$useridPage;

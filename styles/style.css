@@ -188,3 +188,7 @@ form small,.error{
 .author{
     color: chartreuse;
 }
+
+.post-comment{
+    border: 1px  solid yellow;
+}

@@ -19,10 +19,10 @@ if(isset($_POST["titre"]) and isset($_POST["post"])){
     $stm->bindParam("co",$post);
     $stm->bindParam("id",$useridConnected);
     $stm->execute();
-    header("Location:../home.php?userid=".$useridConnected);
+    header("Location:../myPage.php?userid=".$useridConnected);
 }
 else{
-    header("Location:../home.php");
+    header("Location:../myPage.php?userid=".$useridConnected);
 
 }
 

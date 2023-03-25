@@ -20,7 +20,7 @@
         ?>
         
             <div class="comment">
-                <p class="author"><?php echo $first_name." ".$last_name ?></p>
+                <p class="author comment-user"><?php echo $first_name." ".$last_name."<span class='time'>●3min ago</span>"?></p>
                 <!-- <h3 class="title-post"><?php echo $titre?></h3> -->
                 <p class="content"><?php echo $comment?></p>
             </div>

@@ -23,7 +23,7 @@ if(!$conn->query($sql)){
         ?>
         
             <div class="post">
-                <p class="author"><?php echo $firstname." ".$lastname ?></p>
+                <p class="author"><?php echo $firstname." ".$lastname."<span class='time'>●3min ago</span>" ?></p>
                 <h3 class="title-post"><?php echo $titre?></h3>
                 <p class="content"><?php echo $content?></p>
             </div>

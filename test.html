@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tweet Design Example</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      .tweet {
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 10px;
+        margin: 10px;
+      }
+
+      .tweet-header {
+        display: flex;
+        align-items: center;
+      }
+
+      .tweet-avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+
+      .tweet-username {
+        font-weight: bold;
+        margin-right: 5px;
+      }
+
+      .tweet-handle {
+        color: #999;
+      }
+
+      .tweet-body {
+        margin-top: 10px;
+      }
+
+      .tweet-media {
+        margin-top: 10px;
+        max-width: 100%;
+        height: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="tweet">
+      <div class="tweet-header">
+        <img class="tweet-avatar" src="https://via.placeholder.com/50x50" alt="Avatar">
+        <div>
+          <div class="tweet-username">John Doe</div>
+          <div class="tweet-handle">@johndoe</div>
+        </div>
+      </div>
+      <div class="tweet-body">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor ut purus in gravida. Sed ut massa magna. Sed efficitur bibendum dui eget varius. Vestibulum rhoncus luctus ex vel commodo. #loremipsum #dolorsitamet
+      </div>
+      <img class="tweet-media" src="https://via.placeholder.com/500x300" alt="Media">
+    </div>
+  </body>
+</html>

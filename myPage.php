@@ -55,7 +55,7 @@
             </form>
         </ul>
     </nav>
-    
-    <?php include("pageparts/DisplayMyPost.php") ?>
+        <?php include("pageparts/DisplayMyPost.php") ?>
+        
 </body>
 </html>

@@ -13,9 +13,23 @@ foreach($stm as $row2){
     ?>
     
         <div class="post">
-            <p class="author"><?php echo $firstname." ".$lastname ?></p>
+        <div class="tweet-header">
+        <img class="tweet-avatar" src="https://via.placeholder.com/50x50" alt="Avatar">
+        <div>
+          <div class="tweet-username"><?php echo $firstname." ".$lastname."<span class='time'>●3min ago</span>" ?></div>
+          <!-- <div class="tweet-handle">@johndoe</div> -->
+        </div>
+      </div>
+      <div class="tweet-body">
+      <?php echo $content?>
+          </div>
+        <!-- <p class="author"></p>
             <h3 class="title-post"><?php echo $titre?></h3>
             <p class="content"><?php echo $content?></p>
+            <hr>
+            <h3 class="title-post reponse">Reponses:</h3> -->
+
+
             <div class="comments">
             <?php 
             

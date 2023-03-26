@@ -37,8 +37,13 @@ include("pageparts/connect.php");
 </head>
     <nav class="nav-div">
             <ul class="nav-ul">
-                <li class="nav-li logo"><a href="home.php">IFORUM</a></li>
-                <li class="nav-li center">Home</li>
+                <li class="nav-li logo"><a href="home.php">Home</a></li>
+                <li class="nav-li logo" ><a href="./myPage.php?userid=<?php echo $useridConnected?>"><?php echo $FirstName;?></a></li>
+                <li class="nav-li logo last">About</li>
+
+                <!-- <li class="nav-li center">Home</li> -->
+                <!-- <li class="nav-li center">Home</li> -->
+
                 
                 <a><li class="nav-li">Want to sign-out?</li></a>
                 <form action="#" method="post">

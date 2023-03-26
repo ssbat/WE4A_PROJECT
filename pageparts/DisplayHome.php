@@ -1,4 +1,5 @@
 <?php
+include("./pageparts/DateTime.php");
 $sql="SELECT * FROM post LIMIT 20";
 $stm=$conn->query($sql);
 foreach($stm as $row2){
@@ -14,14 +15,17 @@ foreach($stm as $row2){
     
     <div class="post">
         <div class="post-header">
-            <img class="post-avatar" src="https://via.placeholder.com/50x50" alt="Avatar">
+            <!-- <img class="post-avatar" src="https://via.placeholder.com/50x50" alt="Avatar"> -->
+            <img class="post-avatar" src="./images/img23.jpg" alt="Avatar">
+
             <div>
             <div class="post-username"><?php echo $firstname." ".$lastname ?></div>
-            <div class="post-handle"><span >●3min ago</span></div>
+            <div class="post-handle"><span ><?php  echo "● ".getDateTimeDifferenceString($row2["date"]);?></span></div>
+            
             </div>
         </div>
        <div class="post-body">
-            <?php echo $content?>
+            <?php echo $content;/*echo $row2["date"];*/?>
         </div>
         <div class="like-edit-bar">
             <div class="like-button">Like</div>
@@ -50,12 +54,8 @@ foreach($stm as $row2){
             </form>
         </div>
     </div>
+
         
         <?php }
-       
-
-
-
-
 
 ?>

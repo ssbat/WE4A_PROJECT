@@ -23,13 +23,17 @@ body{
     /* margin:0 1em; */
     
 }
+.last{
+    flex-grow: 1;
+}
 a:visited {
     color: white;
     text-decoration: none;
 }
 .logo{
     justify-self: flex-start;
-    flex-grow: 1;
+    margin:0 1em;
+    /* flex-grow: 1; */
 }
 
 .center{

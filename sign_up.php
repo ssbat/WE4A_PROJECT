@@ -32,7 +32,7 @@
             <a href="index.php"><li class="nav-li sign-up">Sign-in</li></a>
         </ul>
     </nav>
-    <form class="sign-in-form" name="Form" method="post" action="#"  onsubmit="return validateForm()">
+    <form class="sign-in-form" name="Form" method="post" action="#"  onsubmit="return validateForm()" enctype="multipart/form-data">
         <h3 class="title-h3">
             Sign up with your username and password
         </h3> 
@@ -70,6 +70,14 @@
         <div class="info-div">
             <label for="birthday">Birthday:</label>
             <input type="date" id="birthday" name="birthday"  class="sign-in-input">
+        </div>
+        <div class="info-div">
+            <!-- <label for="birthday">Birthday:</label> -->
+            <!-- <input type="date" id="birthday" name="birthday"  class="sign-in-input"> -->
+            <label for="Photo">Profile Picture</label>
+            
+            <input type="file" name="image">
+        
         </div>
         <button class="btn-submit" type="submit">Submit</button>
     </form>

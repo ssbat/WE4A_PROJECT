@@ -11,16 +11,34 @@ foreach($stm as $row2){
     
     $titre=$row2["Titre"];
     $content=$row2["content"];
+
+    $sqlLikes="SELECT * FROM likes WHERE post_id=".$row2["id"];
+    $stmLikes=$conn->query($sqlLikes);
+    $Likes=$stmLikes->rowCount();
+    
+    $sqlLiked="SELECT * FROM likes WHERE post_id=".$row2["id"].' AND user_id='.$useridConnected.';';
+    $stmLiked=$conn->query($sqlLiked);
+    $pressed=false;
+
+    if($stmLiked->rowCount()>0){
+        $pressed=true;
+    }
+
+
+    // $result->rowCount()
+    // $resultLikes=$stmLikes->fetch();
+
     ?>
     
     <div class="post">
         <div class="post-header">
             <!-- <img class="post-avatar" src="https://via.placeholder.com/50x50" alt="Avatar"> -->
-            <img class="post-avatar" src="./images/img23.jpg" alt="Avatar">
-
+            <!-- <img class="post-avatar" src="./images/img23.jpg" alt="Avatar"> -->
+            <!-- <img src="<?php /*echo base64_encode($result['profile']); */?>" class="post-avatar" /> -->
+            <img src="./images/<?php echo $result['profile'];?>" class="post-avatar">
             <div>
-            <div class="post-username"><?php echo $firstname." ".$lastname ?></div>
-            <div class="post-handle"><span ><?php  echo "● ".getDateTimeDifferenceString($row2["date"]);?></span></div>
+                <div class="post-username"><?php echo $firstname." ".$lastname ?></div>
+                <div class="post-handle"><span ><?php  echo "● ".getDateTimeDifferenceString($row2["date"]);?></span></div>
             
             </div>
         </div>
@@ -28,8 +46,25 @@ foreach($stm as $row2){
             <?php echo $content;/*echo $row2["date"];*/?>
         </div>
         <div class="like-edit-bar">
-            <div class="like-button">Like</div>
-            <div class="like-button">comments</div>
+            <!-- <div class="like-button">Like</div>
+            <div class="like-button">comments</div> -->
+            <!-- <span class="like-text">Like</span> -->
+            
+            <form class="form-like">
+                <input name="postid-<?php echo $row2["id"]?>" value=<?php echo $row2["id"]?> type="hidden">
+                <input name="userid-<?php echo $row2["id"]?>" value=<?php echo $useridConnected ?> type="hidden">
+                
+                <span class="like-count" id="like-count-<?php echo $row2["id"]?>"><?php echo $Likes?></span>
+                <button type="button" class="like-icon" id="like-button-<?php echo $row2["id"]?>" onclick="like(<?php echo $row2['id']?>)" 
+                style="<?php if(!$pressed){echo "background-image: url(./images/unliked.png)";}
+                    else{echo "background-image: url(./images/liked2.png);"
+                     ;   }
+                    ?>"></button>
+            </form>
+            <!-- <div class="like-button">comments</div>  -->
+
+
+            
             <?php
             if ($useridConnected==$row2["user_id"]){
             ?>
@@ -39,7 +74,7 @@ foreach($stm as $row2){
             </form>
             <?php };?>
         </div>
-
+        
         <hr>
         <div class="comments">
             <?php 
@@ -54,8 +89,5 @@ foreach($stm as $row2){
             </form>
         </div>
     </div>
-
-        
         <?php }
-
 ?>

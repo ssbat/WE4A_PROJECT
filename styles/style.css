@@ -305,3 +305,48 @@ color: #999;
 	cursor: pointer;
 	outline: inherit;
 }
+
+
+.like-btn {
+    display: inline-flex;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+  
+  .like-icon {
+    width: 20px;
+    height: 20px;
+    /* background-image: url("https://www.freepnglogos.com/uploads/like-png/facebook-favorite-hand-like-icon-31.png"); */
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-right: 5px;
+  }
+  
+  .like-text {
+    font-size: 14px;
+    font-weight: bold;
+    margin-right: 5px;
+  }
+  
+  .like-count {
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+.like-icon{
+    /* background: none; */
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+.form-like{
+    display: flex;
+    /* padding-top: 5px; */
+    align-items: center;
+}

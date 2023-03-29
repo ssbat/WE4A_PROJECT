@@ -13,18 +13,50 @@
             $email=$_POST["email"];
             $password=md5($_POST["password"]);
         
+            
+            $filename = $_FILES["image"]["name"];
+            $tempname = $_FILES["image"]["tmp_name"];
+            $folder = "./images/" . $filename;
+            if (move_uploaded_file($tempname, $folder)) {
+                echo "<h3>  Image uploaded successfully!</h3>";
+            } else {
+                echo "<h3>  Failed to upload image!</h3>";
+            }
+            
+            
+            
+            
+            
+            
+                // Insert image content into database 
+                    // $insert = $db->query("INSERT into images (image, created) VALUES ('$imgContent', NOW())"); 
+                    
+                //     if($insert){ 
+                //         $status = 'success'; 
+                //         $statusMsg = "File uploaded successfully."; 
+                //     }else{ 
+                //         $statusMsg = "File upload failed, please try again."; 
+                //     }  
+                // }else{ 
+                //     $statusMsg = 'Sorry, only JPG, JPEG, PNG, & GIF files are allowed to upload.'; 
+                // } 
+            
             $data = [
                 'First_Name' => $first_name,
                 'Last_Name' => $last_name,
                 'Email' => $email,
-                'Password' => $password
-        ];
-       $sql="INSERT INTO users (First_Name,Last_Name,Email,PASSWORD)VALUES(:First_Name,:Last_Name,:Email,:Password)";
-       $stmt= $conn->prepare($sql);
-       $stmt->execute($data);
-        return "Succesfully Created";
-       }
-       return "";
+                'Password' => $password,
+                'po'=>$filename
+            ];
+        
+        
+
+        $sql="INSERT INTO users (First_Name,Last_Name,Email,PASSWORD,profile)VALUES(:First_Name,:Last_Name,:Email,:Password,:po)";
+        $stmt= $conn->prepare($sql);
+        $stmt->execute($data);
+            return "Succesfully Created";
+        }
+        return "";
 
     }
 

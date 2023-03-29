@@ -50,3 +50,9 @@ function passError(password,password2){
     return false;//the pass does not contain errors
 }
 // console.log(containsNumbers("saad2"));
+
+
+
+
+
+

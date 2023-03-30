@@ -19,11 +19,29 @@
         $comment=$row3["content"];
         ?>
         
-            <div class="comment">
-                <p class="author comment-user"><?php echo $first_name." ".$last_name."<span class='time'>●3min ago</span>"?></p>
-                <!-- <h3 class="title-post"><?php echo $titre?></h3> -->
-                <p class="content"><?php echo $comment?></p>
+            <div class="post-header">
+                <img src="./images/<?php 
+                 if($result['profile']){
+                     echo $result['profile'];
+                     // echo "HI";
+                    }else{
+                    echo "unknown.png";
+    
+                }
+                // echo $result['profile'];
+                
+                
+                ?>" class="post-avatar comment-avatar">
+                
+                    <div class="post-username comment-username"><?php echo $first_name." ".$last_name."<br><span class='content'>$comment</span><br>" ?>
+                </div>
+                    <!-- <div class="post-handle"><span ><?php  /*echo "●4min ago"*/?></span></div> -->
+
             </div>
+                <!-- <p class="author comment-user"><?php /*echo $first_name." ".$last_name."<span class='time'>●3min ago</span>"*/?></p> -->
+                <!-- <h3 class="title-post"><?php /*echo $titre*/?></h3> -->
+                <!-- <p class="content"><?php //echo $comment?></p> -->
+            
         <?php }
 
 ?>

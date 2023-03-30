@@ -60,10 +60,11 @@ include("pageparts/connect.php");
         <div style="background-color: #eded; width:100%;height:100%">
 
         </div>
-        <div style="">
+        <div >
             <?php include("./pageparts/DisplayHome.php") ?>
         </div>
         <div class="side-bar" style="background-color: #eded; width:100%;height:100%">
+        <?php include("./pageparts/sidebar.php") ?>
             
         </div>
 

@@ -35,7 +35,18 @@ foreach($stm as $row2){
             <!-- <img class="post-avatar" src="https://via.placeholder.com/50x50" alt="Avatar"> -->
             <!-- <img class="post-avatar" src="./images/img23.jpg" alt="Avatar"> -->
             <!-- <img src="<?php /*echo base64_encode($result['profile']); */?>" class="post-avatar" /> -->
-            <img src="./images/<?php echo $result['profile'];?>" class="post-avatar">
+            <img src="./images/<?php
+            if($result['profile']){
+            echo $result['profile'];
+            // echo "HI";
+            }else{
+            echo "unknown.png";
+
+    }
+
+            
+            
+            ?>" class="post-avatar">
             <div>
                 <div class="post-username"><?php echo $firstname." ".$lastname ?></div>
                 <div class="post-handle"><span ><?php  echo "● ".getDateTimeDifferenceString($row2["date"]);?></span></div>

@@ -40,7 +40,9 @@ include("pageparts/connect.php");
             <ul class="nav-ul">
                 <li class="nav-li logo"><a href="home.php">Home</a></li>
                 <li class="nav-li logo" ><a href="./myPage.php?userid=<?php echo $useridConnected?>"><?php echo $FirstName;?></a></li>
-                <li class="nav-li logo last">About</li>
+                <li class="nav-li logo">About</li>
+                
+                <li class="nav-li logo last"><img class="logo-img" src="./images/2.png" ></li>
 
                 <!-- <li class="nav-li center">Home</li> -->
                 <!-- <li class="nav-li center">Home</li> -->
@@ -53,12 +55,15 @@ include("pageparts/connect.php");
                 </form>
             </ul>
     </nav>
-    <h1 class="title-h1">Home Page</h1>
+    <!-- <h1 class="title-h1">Home Page</h1> -->
     <div class="main" >
-        <div>
+        <div style="background-color: #eded; width:100%;height:100%">
+
+        </div>
+        <div style="">
             <?php include("./pageparts/DisplayHome.php") ?>
         </div>
-        <div class="side-bar">
+        <div class="side-bar" style="background-color: #eded; width:100%;height:100%">
             
         </div>
 

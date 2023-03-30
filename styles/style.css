@@ -3,13 +3,19 @@ body{
     height:100%;
     box-sizing: border-box;
 
-    background-image: url("../images/bg.jpg");
+    /* background-image: url("../images/bg.jpg"); */
     margin: 0;
 
 }
 
+nav li{
+    color:rgb(170, 170, 170);
+    /* color: ; */
+}
+
 .nav-div{
-    color: white;
+    /* color:rgb(170, 170, 170); */
+    /* color: white; */
 }
 .nav-ul{
     display: flex;
@@ -19,21 +25,35 @@ body{
     font-family: 'Lato', sans-serif;
 }
 .nav-li{
-    display: inline-block;
-    /* margin:0 1em; */
-    
+    display: inline-block;    
+}
+.nav-li:hover{
+    color: #2d2d2d;
+    transition: .5s;
 }
 .last{
+    /* justify-self: center; */
+    text-align: center;
     flex-grow: 1;
 }
 a:visited {
-    color: white;
+    /* color: white; */
+    color: inherit;
+    text-decoration: none;
+    /* color:black; */
+}
+a{
     text-decoration: none;
 }
 .logo{
     justify-self: flex-start;
     margin:0 1em;
     /* flex-grow: 1; */
+}
+.logo-img{
+    width: 200px;
+    transform: translateX(-2em);
+
 }
 
 .center{
@@ -43,16 +63,22 @@ a:visited {
 
 .sign-up{
     margin-left: .5em;
-    border: 0.2px solid white;
+    border: 0.2px solid #3B71CA;
     border-radius: 8px;    
     padding: .5em;
-
+    /* background-color: rgb(51, 30, 238); */
+    color: #3B71CA;
+}
+.sign-up:hover{
+    color: white;
+    background-color: #3B71CA;
 }
 .main{
     display: grid;
-    grid-template-columns: 70% 30%;
+    grid-template-columns: 20% 60% 20%;
     background-color: white;
     margin: 0;
+    background-color: #eded;
 }
 .title-h1{ 
     text-align: center;
@@ -139,8 +165,6 @@ form small,.error{
 
 
 
-
-
 .btn-signout,#btn-add{
     background: none;
 	color: inherit;
@@ -149,7 +173,7 @@ form small,.error{
 	font: inherit;
 	cursor: pointer;
 	outline: inherit;
-    color:  white;
+    /* color:  white; */
 }
 
 .a-add{
@@ -187,6 +211,7 @@ hr{
     border-radius: 10px;
     padding: 10px;
     margin: 10px;
+    background: white;
 }
 /*Display My Post begin */
 .title-post{
@@ -260,7 +285,7 @@ color: #999;
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 5px;
-    padding: 5px 10px;
+    /* padding: 5px 10px; */
     color: #999;
     font-size: 0.8em;
     cursor: pointer;
@@ -300,10 +325,12 @@ color: #999;
     background: none;
 	color: inherit;
 	border: none;
-	padding: 0;
+	/* padding: 0; */
 	font: inherit;
 	cursor: pointer;
 	outline: inherit;
+    width: 39px;
+    height: 30px;
 }
 
 
@@ -313,6 +340,7 @@ color: #999;
     border: none;
     background-color: transparent;
     cursor: pointer;
+    /* padding: 0; */
   }
   
   .like-icon {
@@ -322,6 +350,8 @@ color: #999;
     background-repeat: no-repeat;
     background-size: contain;
     margin-right: 5px;
+    margin: 0.4em;
+    margin-bottom: 0.6em;
   }
   
   .like-text {

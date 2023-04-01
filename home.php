@@ -57,13 +57,13 @@ include("pageparts/connect.php");
     </nav>
     <!-- <h1 class="title-h1">Home Page</h1> -->
     <div class="main" >
-        <div style="background-color: #eded; width:100%;height:100%">
-
+        <div class="right-bar">
+            <?php include("./pageparts/right-sidebar.php")?>
         </div>
         <div >
             <?php include("./pageparts/DisplayHome.php") ?>
         </div>
-        <div class="side-bar" style="background-color: #eded; width:100%;height:100%">
+        <div class="side-bar" style=" width:100%;height:100%">
         <?php include("./pageparts/sidebar.php") ?>
             
         </div>

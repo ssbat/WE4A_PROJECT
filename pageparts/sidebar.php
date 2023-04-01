@@ -1,42 +1,83 @@
 
-<?php 
-// echo "ho";
-$sql="SELECT * FROM users";
 
-$result_side=$conn->query($sql);
-// echo $result_side->rowC
-// echo $result_side->rowCount();
-foreach($result_side as $row4){
-    ?>
-    <div class="sidebar">
-    <div class="user">
-      <!-- <img src="" alt="Profile Picture"> -->
-      <img src="./images/<?php
-            if($row4['profile']){
-            echo $row4['profile'];
-            // echo "HI";
-            }else{
-            echo "unknown.png";
-            }
 
-    ?>">
 
-      <h2><?php echo $row4["First_Name"]." ".$row4["Last_Name"] ?></h2>
+
+<div class="conteneur">
+    
+         
+    <div class="user-dashboard-info-box table-responsive ">
+        <table class="table manage-users-top ">
+          <thead>
+                <tr>
+                  <th>Candidate Name</th>
+                  
+                </tr>
+            </thead>
+            <tbody>
+            <?php 
+              // echo "ho";
+              // !!!!!!!!!!!!1
+              // https://www.bootdey.com/snippets/view/light-user-list#html         
+              $sql="SELECT * FROM users";
+              $result_side=$conn->query($sql);
+              // echo $result_side->rowC
+              // echo $result_side->rowCount();
+              foreach($result_side as $row4){
+                ?>
+                  <tr class="users-list">
+                    <td class="title">
+                        <a href="./myPage.php?userid=<?php echo $row4["ID"]?>">
+                        
+                          <div class="thumb">
+                              <img class="img-fluid" src="./images/<?php
+                                                                if($row4['profile']){
+                                                                echo $row4['profile'];
+                                                                // echo "HI";
+                                                                }else{
+                                                                echo "unknown.png";
+                                                                }
+
+                                                        ?>">
+                          </div>
+                        </a>
+                        <a href="./myPage.php?userid=<?php echo $row4["ID"]?>" >
+                          <div class="user-list-details">
+                              <div class="user-list-info">
+                                  <div class="user-list-title">
+                                      <h5 ><?php echo $row4["First_Name"]." ".$row4["Last_Name"] ?></h5>
+                                  </div>
+                                  <div class="user-list-option">
+                                      <ul class="list-unstyled">
+                                          <li>Information Technology</li>
+                                          <li>Rolling Meadows, IL 60008</li>
+                                      </ul>
+                                  </div>
+                              </div>
+                          </div>
+                        
+                        </a>
+                      </td>
+                  </tr> 
+          
+                <?php }?>
+            </tbody>
+        </table>
     </div>
-    <?php 
-}
 
-?>
+</div>
 
-      
-        
-    <!-- <div class="user">
-      <img src="profile-pic-2.jpg" alt="Profile Picture">
-      <h2>Jane Smith</h2>
-    </div>
-  
-    <div class="user">
-      <img src="profile-pic-3.jpg" alt="Profile Picture">
-      <h2>Bob Johnson</h2>
-    </div> -->
-  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

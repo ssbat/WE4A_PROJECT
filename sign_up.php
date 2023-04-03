@@ -45,11 +45,11 @@
         <h3 class="title-h3">
             Sign up with your username and password
         </h3> 
-        <?php if($inserted[0]){
+        <?php if(!empty($inserted) && $inserted[0]==true){
             ?>
             <p> <?php echo "<p class='success'>$inserted[1] </p>"?></p>
         <?php }
-        else {
+        else if(!empty($inserted) && $inserted[0]==false ) {
             ?>
             <p> <?php echo "<p class='error'>$inserted[1] </p>"?></p>
             <?php };?>

@@ -7,7 +7,7 @@
   <div>
             
     <div class="user-container">
-        <h3>Members:</h3>    
+        <h3>Members</h3>    
       <?php 
           // https://www.bootdey.com/snippets/view/light-user-list#html         
           $sql="SELECT * FROM users";

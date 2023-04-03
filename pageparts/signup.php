@@ -9,7 +9,10 @@
         {
             $signAttempted=true;
             $first_name=$_POST["firstname"];
+            $first_name=ucwords(strtolower($first_name));
             $last_name=$_POST["lastname"];
+            $last_name=ucwords(strtolower($last_name));
+
             $email=$_POST["email"];
             $password=md5($_POST["password"]);
         
@@ -49,12 +52,15 @@
                 'po'=>$filename
             ];
         
-        
-
+        try{
         $sql="INSERT INTO users (First_Name,Last_Name,Email,PASSWORD,profile)VALUES(:First_Name,:Last_Name,:Email,:Password,:po)";
         $stmt= $conn->prepare($sql);
         $stmt->execute($data);
-            return "Succesfully Created";
+            return [true,"Succesfully Created"];
+        }
+        catch (Exception $e){
+            return [false,"Already Used Email"];
+        }
         }
         return "";
 

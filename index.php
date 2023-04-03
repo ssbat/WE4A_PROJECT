@@ -4,7 +4,9 @@
     include(".\pageparts\login_verification.php");
     $infoArray=verificationLogin();
     if ($infoArray["Successful"]==true){
-        header("Location:myPage.php?userid=".$useridConnected);
+        // header("Location:myPage.php?userid=".$useridConnected);
+        header("Location:home.php");
+
         
     };
 ?>
@@ -26,8 +28,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Holtwood+One+SC&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
 </head>
-<body>
-    <nav class="nav-div">
+<body style="background-image: url('./images/bg.jpg');">
+    <!-- <nav class="nav-div">
         <ul class="nav-ul">
             <li class="nav-li logo">IFORUM</li>
             <li class="nav-li center">Home</li>
@@ -35,8 +37,24 @@
             <a><li class="nav-li">Not a member?</li></a>
             <a href="sign_up.php"><li class="nav-li sign-up">Join UTBM</li></a>
         </ul>
-    </nav> 
-    <h1 class="title-h1">UTBM PROJECT</h1>
+    </nav> -->
+    <nav class="nav-div">
+            <ul class="nav-ul">
+                <li class="nav-li logo"  style="color:white"><a href="home.php">Home</a></li>
+                <li class="nav-li logo"  style="color:white"><a> Contact</a></li>
+                <li class="nav-li logo" style="color:white">About</li>
+                
+                <li class="nav-li logo last" style="color:white"><img class="logo-img" src="./images/2.png" ></li>
+
+                <!-- <li class="nav-li center">Home</li> -->
+                <!-- <li class="nav-li center">Home</li> -->
+
+                
+                <a><li class="nav-li"  style="color:white">Not a member?</li></a>
+                <a href="sign_up.php"><li class="nav-li sign-up" style="border: 0.2px solid white; color:white">Join UTBM</li></a>
+            </ul>
+    </nav>
+    <!-- <h1 class="title-h1">UTBM PROJECT</h1> -->
     <form class="sign-in-form" method="post">
         <h3 class="title-h3">
             Sign in with your username and password

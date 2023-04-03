@@ -22,24 +22,37 @@
 
 
 </head>
-<body>
+<body style="background-image: url('./images/bg.jpg');">
+    
     <nav class="nav-div">
-        <ul class="nav-ul">
-            <li class="nav-li logo">IFORUM</li>
-            <li class="nav-li center">Home</li>
-            
-            <a><li class="nav-li">Already a member?</li></a>
-            <a href="index.php"><li class="nav-li sign-up">Sign-in</li></a>
-        </ul>
+            <ul class="nav-ul">
+                <li class="nav-li logo"  style="color:white"><a href="home.php">Home</a></li>
+                <li class="nav-li logo"  style="color:white"><a> Contact</a></li>
+                
+                <li class="nav-li logo" style="color:white">About</li>
+                
+                <li class="nav-li logo last" style="color:white"><img class="logo-img" src="./images/2.png" ></li>
+
+                <!-- <li class="nav-li center">Home</li> -->
+                <!-- <li class="nav-li center">Home</li> -->
+
+                
+                <a><li class="nav-li"  style="color:white">Already a member?</li></a>
+                <a href="index.php"><li class="nav-li sign-up" style="border: 0.2px solid white; color:white">Sign-in</li></a>
+            </ul>
     </nav>
     <form class="sign-in-form" name="Form" method="post" action="#"  onsubmit="return validateForm()" enctype="multipart/form-data">
         <h3 class="title-h3">
             Sign up with your username and password
         </h3> 
-        <?php if($inserted){
+        <?php if($inserted[0]){
             ?>
-            <p> <?php echo "<p class='success'>$inserted </p>"?></p>
-        <?php }?> 
+            <p> <?php echo "<p class='success'>$inserted[1] </p>"?></p>
+        <?php }
+        else {
+            ?>
+            <p> <?php echo "<p class='error'>$inserted[1] </p>"?></p>
+            <?php };?>
         <div class="info-div">
             <label for="First Name">First Name</label>
             <input type="text" placeholder="First Name" name="firstname"class="sign-in-input" required>

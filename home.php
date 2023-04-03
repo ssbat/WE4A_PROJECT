@@ -35,6 +35,7 @@ include("pageparts/connect.php");
     <link href="https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Holtwood+One+SC&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
 </head>
     <nav class="nav-div">
             <ul class="nav-ul">
@@ -57,7 +58,7 @@ include("pageparts/connect.php");
     </nav>
     <!-- <h1 class="title-h1">Home Page</h1> -->
     <div class="main" >
-        <div class="right-bar">
+        <div class="left-bar">
             <?php include("./pageparts/right-sidebar.php")?>
         </div>
         <div >

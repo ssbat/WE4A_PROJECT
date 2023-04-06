@@ -39,13 +39,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Holtwood+One+SC&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-</head>
-<body>
-    <nav class="nav-div">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Source+Sans+Pro:wght@300;700&display=swap" rel="stylesheet">
+    <script src="scripts/like.js"></script>
+    
+    <body>
+<nav class="nav-div">
             <ul class="nav-ul">
                 <li class="nav-li logo"><a href="home.php">Home</a></li>
                 <li class="nav-li logo" ><a href="./myPage.php?userid=<?php echo $useridConnected?>"><?php echo $FirstName;?></a></li>
-                <li class="nav-li logo last">About</li>
+                <li class="nav-li logo">About</li>
+                
+                <li class="nav-li logo last"><img class="logo-img" src="./images/2.png" ></li>
 
                 <!-- <li class="nav-li center">Home</li> -->
                 <!-- <li class="nav-li center">Home</li> -->
@@ -58,7 +63,21 @@
                 </form>
             </ul>
     </nav>
-        <?php include("pageparts/DisplayMyPost.php") ?>
+    <div class="main" >
+        <div class="left-bar">
+            <?php include("./pageparts/right-sidebar.php")?>
+        </div>
+        <div class="middle">
+            <?php include("pageparts/DisplayMyPost.php") ?>
+        </div>
+
+        <div class="side-bar" style=" width:100%;height:100%">
+        <?php include("./pageparts/sidebar.php") ?>
+            
+        </div>
+
+    </div>
+      
         
 </body>
 </html>

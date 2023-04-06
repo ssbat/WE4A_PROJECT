@@ -80,9 +80,22 @@
         <small id="password"></small>
         <p class="note">Password must be at least 8 characters</p>
         
+
+
+        <div class="info-div">
+        <label for="Gender">Gender:</label>
+        <input type="radio" id="gender" name="gender" value="male" required/> Male  
+        <br>
+        <input type="radio" id="gender" name="gender" value="female"/> Female <br/>
+
+
+
+
+
+
         <div class="info-div">
             <label for="birthday">Birthday:</label>
-            <input type="date" id="birthday" name="birthday"  class="sign-in-input">
+            <input type="date" id="birthday" name="birthday"  class="sign-in-input" max="2017-04-01">
         </div>
         <div class="info-div">
             <!-- <label for="birthday">Birthday:</label> -->

@@ -80,7 +80,17 @@
         <small id="password"></small>
         <p class="note">Password must be at least 8 characters</p>
         
+        <div class="info-div">
+            <label for="password">Spécialité</label>
+            <select  name="spec" class="sign-in-input" required>
+                <option disabled selected value> -- select an option -- </option>
 
+                <option value="Génie informatique">Génie informatique</option>
+                <option value="Génie mécanique">Génie mécanique</option>
+                <option value="Génie industriel">Génie industriel</option>
+                <option value="Génie énergie">Génie énergie</option>
+          </select>
+        </div>
 
         <div class="info-div">
         <label for="Gender">Gender:</label>

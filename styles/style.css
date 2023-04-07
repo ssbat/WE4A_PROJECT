@@ -25,7 +25,7 @@ nav li{
     font-family: 'Lato', sans-serif;
 }
 .nav-li{
-    display: inline-block;    
+    display: inline-block;
 }
 .nav-li:hover{
     color: #2d2d2d;
@@ -64,7 +64,7 @@ a{
 .sign-up{
     margin-left: .5em;
     border: 0.2px solid #3B71CA;
-    border-radius: 8px;    
+    border-radius: 8px;
     padding: .5em;
     /* background-color: rgb(51, 30, 238); */
     color: #3B71CA;
@@ -80,13 +80,13 @@ a{
     margin: 0;
     background-color: #eded;
 }
-.title-h1{ 
+.title-h1{
     text-align: center;
     color: rgb(230, 29, 29);
     color: rgb(249, 253, 7);
 
     font-family: 'Holtwood One SC', serif;
-    
+
 }
 .title-h3{
     font-family: 'Tilt Warp', cursive;
@@ -136,7 +136,7 @@ a{
     color: white;
     width: 50%;
     cursor: pointer;
-    
+
 }
 .btn-submit:hover{
     background-color: #52389e;
@@ -354,7 +354,7 @@ color: #999;
     cursor: pointer;
     /* padding: 0; */
   }
-  
+
   .like-icon {
     width: 20px;
     height: 20px;
@@ -365,13 +365,13 @@ color: #999;
     margin: 0.4em;
     margin-bottom: 0.6em;
   }
-  
+
   .like-text {
     font-size: 14px;
     font-weight: bold;
     margin-right: 5px;
   }
-  
+
   .like-count {
     font-size: 14px;
     font-weight: bold;
@@ -410,7 +410,7 @@ color: #999;
     flex-direction: column;
     flex-direction: column;
   }
-  
+
   .user {
     display: flex;
     align-items: center;
@@ -418,14 +418,14 @@ color: #999;
     margin-bottom: 10px;
 
   }
-  
+
   .user img {
     width: 75px;
     height: 75px;
     /*border-radius: 50%;*/
     margin-right: 10px;
   }
-  
+
   .user h2 {
     font-size: 1.2rem;
     font-weight: 400;
@@ -460,7 +460,8 @@ a{
 }
 .h5-test{
     margin:  0;
-    color:#007bff
+    color:#007bff;
+    font-size: 1em;
 }
 
 .user-container .google-maps{
@@ -470,20 +471,20 @@ a{
     padding: 20px;
     margin-bottom: 20px;
   }
-  
+
   .user-container .google-maps .map{
     height: 300px;
     width: 100%;
     border: none;
   }
-  
+
   .user-container .user{
     padding: 20px 0;
     border-top: 1px solid #f1f2f2;
     border-bottom: 1px solid #f1f2f2;
     margin-bottom: 20px;
   }
-  
+
   img.profile-photo-lg{
     height: 80px;
     width: 80px;
@@ -498,12 +499,30 @@ a{
     text-align: center;
     color: rgb(210, 18, 18);
   }
+  .btn-cmnt{
+    background: #74befa;
+	color: #fff;
+	border: 1px solid #eee;
+	border-radius: 20px;
+	box-shadow: 5px 5px 5px #eee;
+	text-shadow: none;
+    height: 2em;
+
+  }
+  .btn-cmnt:hover{
+    background: #016ABC;
+	color: #fff;
+	border: 1px solid #eee;
+	border-radius: 20px;
+	box-shadow: 5px 5px 5px #eee;
+	text-shadow: none;
+  }
 
 
   /*fin right bar*/
 
 .left-bar{
-    background-color:#3B71CA ;
+    background-color:#326ccb ;
     display: flex;
     flex-direction: column;
     /* position: fixed; */
@@ -526,6 +545,7 @@ a{
     text-align: center;
     display: flex;
     align-items: center;
+    height: 55px;
 }
 .link-bar a{
     display: block;
@@ -546,7 +566,7 @@ a{
 
 .links-container hr{
     width: 80%;
-    
+
 }
 .link-bar:hover{
     background-color:#4d80d3 ;

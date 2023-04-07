@@ -25,7 +25,10 @@
             } else {
                 echo "<h3>  Failed to upload image!</h3>";
             }
-            
+            $gender=$_POST["gender"];
+            $specialite=$_POST["spec"];
+
+
             
             
             
@@ -49,11 +52,13 @@
                 'Last_Name' => $last_name,
                 'Email' => $email,
                 'Password' => $password,
-                'po'=>$filename
+                'po'=>$filename,
+                'gender'=>$gender,
+                'spec'=>$specialite
             ];
         
         try{
-        $sql="INSERT INTO users (First_Name,Last_Name,Email,PASSWORD,profile)VALUES(:First_Name,:Last_Name,:Email,:Password,:po)";
+        $sql="INSERT INTO users (First_Name,Last_Name,Email,PASSWORD,profile,Gender,Specialite)VALUES(:First_Name,:Last_Name,:Email,:Password,:po,:gender,:spec)";
         $stmt= $conn->prepare($sql);
         $stmt->execute($data);
             return [true,"Succesfully Created"];

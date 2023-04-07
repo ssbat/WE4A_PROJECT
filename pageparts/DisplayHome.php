@@ -93,12 +93,20 @@ foreach($stm as $row2){
                 $postid=$row2["id"];
                 include("./pageparts/DisplayComments.php")
             ?>                
-            <form method="post" class="post-comment" action="./pageparts/processing_comment.php">
-                        <input  name="comment" >
+            <form method="post" class="post-comment" action="./pageparts/processing_comment.php" onsubmit="return validateComment(<?php echo $row2['id']?>)">
+                        
+            <!-- <input  name="comment" > -->
+                        <small class="error" id="error-<?php echo $row2["id"]?>"></small>
+                        <input  name="comment" id="cmnt-<?php echo $row2["id"]?>" >
                         <input name="post-id" value=<?php echo $row2["id"] ?> type="hidden">
-                        <button type="submit">Post comment</button>
+                        <button type="submit" class="btn-cmnt" >Post comment</button>
             </form>
         </div>
     </div>
         <?php }
+            ?>
+            <a class="sign-up a-add" href="./post.php"><button id="btn-add">Add Post</button></a>
+            
+            <?php 
 ?>
+    

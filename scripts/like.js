@@ -14,7 +14,7 @@ function like(postid){
   console.log(userId);
   // Send an AJAX request to the PHP script
   const xhr = new XMLHttpRequest();
-  xhr.open('POST', './scripts/like.php', true);
+  xhr.open('POST', './pageparts/like.php', true);
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
   console.log(xhr);
   xhr.onreadystatechange = function() {

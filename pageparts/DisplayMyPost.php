@@ -17,6 +17,7 @@ $firstname=$result["First_Name"];
 // $result=$stm2
 
 $photo=$result["profile"];
+$spec=$result["Specialite"];
 
 
 if(!$stm2){
@@ -48,7 +49,7 @@ if(!$stm2){
     </div>
     <div class="desc">
         <div class="desc-1">
-        Étudiant ingénieur en Génie Informatique à l'Université de Technologies de Belfort-Montbéliard
+        Étudiant ingénieur en <?php echo $spec?> à l'Université de Technologies de Belfort-Montbéliard
         </div>
         <div  class="desc-2">
         <!-- Étudiersité de Technologies de Belfort-Montbéliard -->

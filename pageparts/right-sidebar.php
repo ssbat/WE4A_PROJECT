@@ -3,6 +3,8 @@
     
 </div>
 <div class="links-container">
+    <hr>
+
     <div class="link-bar">
         <a href="home.php"><img src="images/home2.png"/></a><h5><a href="home.php">Home</a></h5>
     </div>

@@ -22,8 +22,8 @@
                     <img class="profile-photo-lg" src="./images/<?php if($row4['profile']){echo $row4['profile'];}else{echo "avatar7.png";}?>"></div>
                   <div >
                     <h5 class="h5-test" ><?php echo $row4["First_Name"]." ".$row4["Last_Name"] ?> Page</h5>
-                    <p>Software Engineer</p>
-                    <p class="text-muted">500m away</p>
+                    <p><?php echo $row4["Specialite"]?></p>
+                    <!-- <p class="text-muted">500m away</p> -->
                   </div>
                   <!-- <div class="col-md-3 col-sm-3">
                     <button class="btn btn-primary pull-right">Add Friend</button>

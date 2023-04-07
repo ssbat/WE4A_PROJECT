@@ -37,6 +37,8 @@ include("pageparts/connect.php");
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
     <script src="scripts/like.js"></script>
+    <script src="scripts/comment.js"></script>
+
 </head>
     <nav class="nav-div">
             <ul class="nav-ul">

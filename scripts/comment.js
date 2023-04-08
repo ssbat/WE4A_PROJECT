@@ -1,17 +1,22 @@
-function validateComment(index){
-    console.log(index);
-    var comment=document.getElementById('cmnt-'+index).value
-    // var error=document.getElementById('error-'+index)
+function validateComment(post_id,author){
+    console.log(post_id);
+    console.log(author);
+    var content=document.getElementById('cmnt-'+post_id).value
+    var comments_div=document.getElementById('comments-'+post_id)
+    // var error=document.getElementById('error-'+post_id)
+    // let form = document.getElementById("mySelect").lastChild.text;
 
-    // const comment = document.querySelector('input[name="cmnt-'+index+'"]').value;
-    // const error = document.querySelector('input[name="error-'+index+'"]').value;
-
-
+    console.log(comments_div);
+    // const comment = document.querySelector('input[name="cmnt-'+post_id+'"]').value;
+    // const error = document.querySelector('input[name="error-'+post_id+'"]').value;
     // var error=document.getElementById("error")
-    if(comment.length==0){
+    if(content.length==0){
         alert("Comment can't be empty")
         return false
     }
     return true
+}
+function comment(post_id){
+    
 
 }

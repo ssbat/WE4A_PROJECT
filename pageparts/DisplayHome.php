@@ -57,10 +57,6 @@ foreach($stm as $row2){
             <?php echo $content;/*echo $row2["date"];*/?>
         </div>
         <div class="like-edit-bar">
-            <!-- <div class="like-button">Like</div>
-            <div class="like-button">comments</div> -->
-            <!-- <span class="like-text">Like</span> -->
-            
             <form class="form-like">
                 <input name="postid-<?php echo $row2["id"]?>" value=<?php echo $row2["id"]?> type="hidden">
                 <input name="userid-<?php echo $row2["id"]?>" value=<?php echo $useridConnected ?> type="hidden">
@@ -72,9 +68,6 @@ foreach($stm as $row2){
                      ;   }
                     ?>"></button>
             </form>
-            <!-- <div class="like-button">comments</div>  -->
-
-
             
             <?php
             if ($useridConnected==$row2["user_id"]){
@@ -87,13 +80,13 @@ foreach($stm as $row2){
         </div>
         
         <hr>
-        <div class="comments">
+        <div class="comments" id="comments-<?php echo $row2["id"]?>">
             <?php 
             
                 $postid=$row2["id"];
                 include("./pageparts/DisplayComments.php")
             ?>                
-            <form method="post" class="post-comment" action="./pageparts/processing_comment.php" onsubmit="return validateComment(<?php echo $row2['id']?>)">
+            <form method="post" class="post-comment" action="./pageparts/processing_comment.php" onsubmit="return validateComment(<?php echo $row2['id']?>,<?php echo $useridConnected?>)">
                         
             <!-- <input  name="comment" > -->
                         <small class="error" id="error-<?php echo $row2["id"]?>"></small>

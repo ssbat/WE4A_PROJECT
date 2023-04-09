@@ -84,16 +84,41 @@ foreach($stm as $row2){
             <?php 
             
                 $postid=$row2["id"];
-                include("./pageparts/DisplayComments.php")
-            ?>                
-            <form method="post" class="post-comment" action="./pageparts/processing_comment.php" onsubmit="return validateComment(<?php echo $row2['id']?>,<?php echo $useridConnected?>)">
+                include("./pageparts/DisplayComments.php");
+
+
+
+
+
+            ?>             
+            <?php 
+                $sqlforphotoandname="SELECT * FROM users WHERE id=".$useridConnected;
+                $resultphotoandname=$conn->query($sqlforphotoandname);
+                $resultjava=$resultphotoandname->fetch();
+                $photoJava=$resultjava["profile"];
+                $firstJava=$resultjava["First_Name"];
+                $lastJava=$resultjava["Last_Name"];
+                $firstandLast=$firstJava." ".$lastJava;
+                if(!$photoJava){                   
+                   $photoJava='unknown.png';
+
+               }
+            //    echo $firstandLast;
+            //    echo $photoJava;
+            //    echo $useridConnected;
+
+
+
+
+                ?>   
+            <div  class="post-comment" id="post-comment-<?php echo $row2["id"]?>" >
                         
             <!-- <input  name="comment" > -->
                         <small class="error" id="error-<?php echo $row2["id"]?>"></small>
                         <input  name="comment" id="cmnt-<?php echo $row2["id"]?>" >
                         <input name="post-id" value=<?php echo $row2["id"] ?> type="hidden">
-                        <button type="submit" class="btn-cmnt" >Post comment</button>
-            </form>
+                        <button type="submit" class="btn-cmnt" onclick="return validateComment(<?php echo $row2['id']?>,<?php echo $useridConnected?>,'<?php echo $firstandLast ?>','<?php echo $photoJava ?>') ">Post comment</button>
+            </div>
         </div>
     </div>
         <?php }

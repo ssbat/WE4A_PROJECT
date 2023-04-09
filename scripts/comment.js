@@ -5,6 +5,8 @@ function validateComment(post_id,author,authorname,authorphoto){
     console.log(authorphoto);
 
     var content=document.getElementById('cmnt-'+post_id).value
+    document.getElementById('cmnt-'+post_id).value=""
+    
     var comments_div=document.getElementById('comments-div-'+post_id)
     // var error=document.getElementById('error-'+post_id)
     // let form = document.getElementById("mySelect").lastChild.text;

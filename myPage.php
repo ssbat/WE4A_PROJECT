@@ -51,11 +51,6 @@
                 <li class="nav-li logo">About</li>
                 
                 <li class="nav-li logo last"><img class="logo-img" src="./images/2.png" ></li>
-
-                <!-- <li class="nav-li center">Home</li> -->
-                <!-- <li class="nav-li center">Home</li> -->
-
-                
                 <a><li class="nav-li">Want to sign-out?</li></a>
                 <form action="#" method="post">
                     <input type="hidden" name="logout" value="OK">

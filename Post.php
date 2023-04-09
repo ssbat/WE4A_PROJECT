@@ -35,18 +35,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Holtwood+One+SC&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
 </head>
-<body>
-    <nav class="nav-div">
-        <ul class="nav-ul">
-            <li class="nav-li logo">IFORUM</li>
-            <li class="nav-li center">Home</li>
-            
-            <a><li class="nav-li">Want to sign-out?</li></a>
-            <form action="#" method="post">
-                <input type="hidden" name="logout" value="OK">
-                <button class="btn-signout" type="submit"><li class="nav-li sign-up">Signout</li></button>
-            </form>
-        </ul>
+<body style="background-image: url('./images/bg.jpg');">
+<nav class="nav-div">
+            <ul class="nav-ul">
+                <li class="nav-li logo"  style="color:white"><a href="home.php">Home</a></li>
+                <li class="nav-li logo" style="color:white" ><a href="./myPage.php?userid=<?php echo $useridConnected?>"><?php echo $FirstName;?></a></li>
+                <li class="nav-li logo" style="color:white">About</li>
+                
+                <li class="nav-li logo last" style="color:white"><img class="logo-img" src="./images/2.png" ></li>
+
+                <!-- <li class="nav-li center">Home</li> -->
+                <!-- <li class="nav-li center">Home</li> -->
+
+                
+                <a><li class="nav-li" style="color:white">Want to sign-out?</li></a>
+                <form action="#" method="post">
+                    <input type="hidden" name="logout" value="OK">
+                    <button class="btn-signout" type="submit"><li class="nav-li sign-up" style="border: 0.2px solid white; color:white">Signout</li></button>
+                </form>
+            </ul>
     </nav>
     <form action="./pageparts/processposting.php" method="post" class="sign-in-form ">
         <div class="info-div">

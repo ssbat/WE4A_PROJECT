@@ -12,17 +12,19 @@ include("./pageparts/DateTime.php");
 $sql2="SELECT * FROM users WHERE id=".$useridPage;
 $stm2=$conn->query($sql2);
 $result=$stm2->fetch();
+
+
+
+if(!$stm2 or !$result){
+    echo"<center><h1 style='color:red'>Erreur servenue : No user Found </h1></center>";
+    // echo "</div>";
+}else{
 $lastname=$result["Last_Name"];
 $firstname=$result["First_Name"];
 // $result=$stm2
 
 $photo=$result["profile"];
 $spec=$result["Specialite"];
-
-
-if(!$stm2){
-    echo"Erreur servenue";
-}else{
     ?>
     <!-- <h1 class="title-h1"><?php echo "Welcome To ".$firstname." Page" ?></h1> -->
     
@@ -156,8 +158,9 @@ if(!$stm2){
             <a class="sign-up a-add" href="./post.php"><button id="btn-add">Add Post</button></a>
             
             <?php }
+echo "</div>";
 } 
-echo "</div>"?>
+?>
 
 
 <!-- echo "Titre:$titre <br>Content:$content <br>"; -->

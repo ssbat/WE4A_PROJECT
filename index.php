@@ -44,12 +44,7 @@
                 <li class="nav-li logo"  style="color:white"><a> Contact</a></li>
                 <li class="nav-li logo" style="color:white">About</li>
                 
-                <li class="nav-li logo last" style="color:white"><img class="logo-img" src="./images/2.png" ></li>
-
-                <!-- <li class="nav-li center">Home</li> -->
-                <!-- <li class="nav-li center">Home</li> -->
-
-                
+                <li class="nav-li logo last" style="color:white"><img class="logo-img" src="./images/2.png" ></li>                
                 <a><li class="nav-li"  style="color:white">Not a member?</li></a>
                 <a href="sign_up.php"><li class="nav-li sign-up" style="border: 0.2px solid white; color:white">Join UTBM</li></a>
             </ul>

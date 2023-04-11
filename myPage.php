@@ -42,6 +42,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Source+Sans+Pro:wght@300;700&display=swap" rel="stylesheet">
     <script src="scripts/like.js"></script>
+    <script src="scripts/sidebar.js"></script>
+
     
     <body>
 <nav class="nav-div">
@@ -67,7 +69,23 @@
         </div>
 
         <div class="side-bar" style=" width:100%;height:100%">
-        <?php include("./pageparts/sidebar.php") ?>
+            <div class="container">
+                <div>
+                        
+                    <div class="user-container" id="user-container">
+                        <h3>Members</h3>    
+                        <form class="search-form">
+                            <input type="text" class="search" id="search-input" onkeyup="searchS()" placeholder="Search...">
+                        </form> 
+                        <div id="result-search" >
+                            <?php/* include("./pageparts/sidebar.php") */?>
+
+                        </div>
+                    </div>
+                </div>
+                    
+            </div>
+           
             
         </div>
 

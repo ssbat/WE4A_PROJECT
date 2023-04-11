@@ -38,6 +38,8 @@ include("pageparts/connect.php");
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
     <script src="scripts/like.js"></script>
     <script src="scripts/comment.js"></script>
+    <script src="scripts/sidebar.js"></script>
+
 
 </head>
     <nav class="nav-div">
@@ -68,7 +70,23 @@ include("pageparts/connect.php");
             <?php include("./pageparts/DisplayHome.php") ?>
         </div>
         <div class="side-bar" style=" width:100%;height:100%">
-        <?php include("./pageparts/sidebar.php") ?>
+            <div class="container">
+                <div>
+                        
+                    <div class="user-container" id="user-container">
+                        <h3>Members</h3>    
+                        <form class="search-form">
+                            <input type="text" class="search" id="search-input" onkeyup="searchS()" placeholder="Search...">
+                        </form> 
+                        <div id="result-search" >
+                            <?php/* include("./pageparts/sidebar.php") */?>
+
+                        </div>
+                    </div>
+                </div>
+                    
+            </div>
+           
             
         </div>
 

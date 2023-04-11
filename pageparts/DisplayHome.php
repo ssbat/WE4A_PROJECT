@@ -1,6 +1,6 @@
 <?php
 include("./pageparts/DateTime.php");
-$sql="SELECT * FROM post LIMIT 20";
+$sql="SELECT * FROM `post` ORDER BY `post`.`date` DESC";
 $stm=$conn->query($sql);
 foreach($stm as $row2){
     $sql2="SELECT * FROM users WHERE id=".$row2["user_id"];

@@ -61,11 +61,14 @@ $spec=$result["Specialite"];
     </div>
 </div>
     <?php
-    $sql="SELECT * FROM post WHERE user_id=".$useridPage;
+    $sql="SELECT * FROM post WHERE user_id=".$useridPage." ORDER BY `date` DESC";
     echo "<div class='post-container'>";
     foreach($conn->query($sql) as $row2){
         $titre=$row2["Titre"];
         $content=$row2["content"];
+        $post_photo=null;
+        if($row2['photo']){$post_photo=$row2['photo'];};
+
 
 
         $sqlLikes="SELECT * FROM likes WHERE post_id=".$row2["id"];
@@ -105,7 +108,10 @@ $spec=$result["Specialite"];
             </div>
     </div>
     <div class="post-body">
-            <?php echo $content;/*echo $row2["date"];*/?>
+        <p style="word-wrap: break-word"><?php echo $content;/*echo $row2["date"];*/?></p>
+        <?php if($post_photo){ ?>
+        <img src="./images/<?php echo $post_photo;?>" alt="Tweet image" class="tweet-image">
+        <?php ; }?>
     </div>
     <div class="like-edit-bar">
             <!-- <div class="like-button">Like</div>
@@ -144,11 +150,34 @@ $spec=$result["Specialite"];
                 $postid=$row2["id"];
                 include("./pageparts/DisplayComments.php")
             ?>                
-            <form method="post" class="post-comment" action="./pageparts/processing_comment.php">
-                        <input  name="comment" >
+            <?php 
+                $sqlforphotoandname="SELECT * FROM users WHERE id=".$useridConnected;
+                $resultphotoandname=$conn->query($sqlforphotoandname);
+                $resultjava=$resultphotoandname->fetch();
+                $photoJava=$resultjava["profile"];
+                $firstJava=$resultjava["First_Name"];
+                $lastJava=$resultjava["Last_Name"];
+                $firstandLast=$firstJava." ".$lastJava;
+                if(!$photoJava){                   
+                   $photoJava='unknown.png';
+
+               }
+            //    echo $firstandLast;
+            //    echo $photoJava;
+            //    echo $useridConnected;
+
+
+
+
+                ?>   
+            <div  class="post-comment" id="post-comment-<?php echo $row2["id"]?>" >
+                        
+            <!-- <input  name="comment" > -->
+                        <small class="error" id="error-<?php echo $row2["id"]?>"></small>
+                        <input  name="comment" id="cmnt-<?php echo $row2["id"]?>" >
                         <input name="post-id" value=<?php echo $row2["id"] ?> type="hidden">
-                        <button type="submit">Post comment</button>
-            </form>
+                        <button type="submit" class="btn-cmnt" onclick="return validateComment(<?php echo $row2['id']?>,<?php echo $useridConnected?>,'<?php echo $firstandLast ?>','<?php echo $photoJava ?>') ">Post comment</button>
+            </div>
     </div>
 </div>
         

@@ -1,6 +1,11 @@
 <?php 
-    include("pageparts/connect.php");
-    $conn=connect_db();
+    include("classes/Dbconn.php");
+
+   $db=new Dbconn();
+   if(!$db->connSuccessful[0]){
+       die($db->connSuccessful[1]);
+   }
+   $conn=$db->conn;
     include(".\pageparts\login_verification.php");
     if (!isset($_POST["logout"])){
         $infoArray=verificationLogin();
@@ -42,6 +47,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Source+Sans+Pro:wght@300;700&display=swap" rel="stylesheet">
     <script src="scripts/like.js"></script>
+    <script src="scripts/comment.js"></script>
+
     <script src="scripts/sidebar.js"></script>
 
     
@@ -78,8 +85,7 @@
                             <input type="text" class="search" id="search-input" onkeyup="searchS()" placeholder="Search...">
                         </form> 
                         <div id="result-search" >
-                            <?php/* include("./pageparts/sidebar.php") */?>
-
+                          
                         </div>
                     </div>
                 </div>

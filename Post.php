@@ -1,6 +1,11 @@
 <?php 
-    include("pageparts/connect.php");
-    $conn=connect_db();
+    include("classes/Dbconn.php");
+
+    $db=new Dbconn();
+    if(!$db->connSuccessful[0]){
+        die($db->connSuccessful[1]);
+    }
+    $conn=$db->conn;
     include(".\pageparts\login_verification.php");
     if (!isset($_POST["logout"])){
         $infoArray=verificationLogin();
@@ -55,7 +60,7 @@
                 </form>
             </ul>
     </nav>
-    <form action="./pageparts/processposting.php" method="post" class="sign-in-form ">
+    <form action="./pageparts/processposting.php" method="post" class="sign-in-form" enctype="multipart/form-data">
         <div class="info-div">
             <label for="Titre" class="title-h3">Titre</label>
             <input type="text" placeholder="Titre" name="titre" class="sign-in-input post-input" required>
@@ -64,6 +69,8 @@
             <label for="Titre" class="title-h3">Titre</label>
             <textarea type="text" placeholder="Titre" name="post"  class="sign-in-input post-input post-area" required></textarea>
         </div>
+        
+        <input type="file" name="photo">
         <button class="btn-submit" type="submit">Submit</button>
 
     </form>

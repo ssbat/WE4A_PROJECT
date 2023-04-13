@@ -1,6 +1,11 @@
 <?php 
-    include("pageparts/connect.php");
-    $conn=connect_db();
+    include("classes/Dbconn.php");
+
+    $db=new Dbconn();
+    if(!$db->connSuccessful[0]){
+        die($db->connSuccessful[1]);
+    }
+    $conn=$db->conn;
     include("pageparts/signup.php");
     $inserted=CheckNewAccountForm();
     
@@ -112,7 +117,7 @@
             <!-- <input type="date" id="birthday" name="birthday"  class="sign-in-input"> -->
             <label for="Photo">Profile Picture</label>
             
-            <input type="file" name="image">
+            <input type="file" name="image" id="fileUpload">
         
         </div>
         <button class="btn-submit" type="submit">Submit</button>

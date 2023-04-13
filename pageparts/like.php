@@ -1,7 +1,13 @@
 <?php 
     // echo getcwd();
-    include("connect.php");
-    $conn=connect_db();
+    include("../classes/Dbconn.php");
+
+
+    $db=new Dbconn();
+    if(!$db->connSuccessful[0]){
+        die($db->connSuccessful[1]);
+    }
+    $conn=$db->conn;
     include("login_verification.php");
     $infoArray=verificationLogin();
 

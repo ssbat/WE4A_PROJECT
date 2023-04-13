@@ -11,6 +11,9 @@ foreach($stm as $row2){
     
     $titre=$row2["Titre"];
     $content=$row2["content"];
+    $post_photo=null;
+    if($row2['photo']){$post_photo=$row2['photo'];};
+
 
     $sqlLikes="SELECT * FROM likes WHERE post_id=".$row2["id"];
     $stmLikes=$conn->query($sqlLikes);
@@ -54,7 +57,10 @@ foreach($stm as $row2){
             </div>
         </div>
        <div class="post-body">
-            <?php echo $content;/*echo $row2["date"];*/?>
+            <p style="word-wrap: break-word"><?php echo $content;/*echo $row2["date"];*/?></p>
+            <?php if($post_photo){ ?>
+            <img src="./images/<?php echo $post_photo;?>" alt="Tweet image" class="tweet-image">
+            <?php ; }?>
         </div>
         <div class="like-edit-bar">
             <form class="form-like">

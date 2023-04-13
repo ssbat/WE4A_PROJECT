@@ -28,24 +28,6 @@
             $gender=$_POST["gender"];
             $specialite=$_POST["spec"];
 
-
-            
-            
-            
-            
-            
-                // Insert image content into database 
-                    // $insert = $db->query("INSERT into images (image, created) VALUES ('$imgContent', NOW())"); 
-                    
-                //     if($insert){ 
-                //         $status = 'success'; 
-                //         $statusMsg = "File uploaded successfully."; 
-                //     }else{ 
-                //         $statusMsg = "File upload failed, please try again."; 
-                //     }  
-                // }else{ 
-                //     $statusMsg = 'Sorry, only JPG, JPEG, PNG, & GIF files are allowed to upload.'; 
-                // } 
             
             $data = [
                 'First_Name' => $first_name,

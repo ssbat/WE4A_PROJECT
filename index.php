@@ -1,6 +1,11 @@
 <?php 
-    include("pageparts/connect.php");
-    $conn=connect_db();
+    include("classes/Dbconn.php");
+
+    $db=new Dbconn();
+    if(!$db->connSuccessful[0]){
+        die($db->connSuccessful[1]);
+    }
+    $conn=$db->conn;
     include(".\pageparts\login_verification.php");
     $infoArray=verificationLogin();
     if ($infoArray["Successful"]==true){

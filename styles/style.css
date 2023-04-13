@@ -666,3 +666,29 @@ margin-top: -5em;
     width: 80%;
     margin: 0 auto;
 }
+
+.tweet-image {
+    display: block;
+    max-width: 400px;
+    max-height:600px;
+
+    margin-bottom: 8px;
+
+  }
+
+input[type=file]::file-selector-button {
+    background-color: inherit;
+    color: white;
+    border: 0px;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    padding: 10px 15px;
+    margin-right: 20px;
+    transition: .5s;
+  }
+  
+  input[type=file]::file-selector-button:hover {
+    cursor: pointer; 
+    padding: 1em;
+    transition: 1s; 
+}

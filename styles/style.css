@@ -692,3 +692,14 @@ input[type=file]::file-selector-button {
     padding: 1em;
     transition: 1s; 
 }
+.update{
+    margin-bottom: .5em;
+    margin-left: -1.5em;
+}
+.remove-div{
+    width: 60%;
+    margin-bottom: 1em;
+}
+.remove{
+    align-self: flex-start;
+}

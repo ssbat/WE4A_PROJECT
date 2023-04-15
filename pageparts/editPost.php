@@ -28,16 +28,43 @@
     {
         $titre=$_POST["titre"];
         $post=$_POST["post"];
-        
-        $sql="UPDATE post SET Titre=:ti,content=:co WHERE id=:id";
-        $stm=$conn->prepare($sql);
-        $stm->bindParam("ti",$titre);
-        $stm->bindParam("co",$post);
-        $stm->bindParam("id",$_POST["postIDMODIFIED"]);
+        $filename = $_FILES["photo"]["name"];
+        $tempname = $_FILES["photo"]["tmp_name"];
+        $folder = "../images/" . $filename;
+        if (move_uploaded_file($tempname, $folder)) {
+            echo "<h3>  Image uploaded successfully!</h3>";
+        } else {
+            echo "<h3>  Failed to upload image!</h3>";
+            $filename=null;
+        }
+
+        if($filename){
+            // echo "$$$$$$$$";
+            $sql="UPDATE post SET Titre=:ti,content=:co,photo=:po WHERE id=:id";
+            $stm=$conn->prepare($sql);
+            $stm->bindParam("ti",$titre);
+            $stm->bindParam("co",$post);
+            $stm->bindParam("id",$_POST["postIDMODIFIED"]);
+            $stm->bindParam("po",$filename);
+        }
+        else{
+            $sql="UPDATE post SET Titre=:ti,content=:co WHERE id=:id";
+            $stm=$conn->prepare($sql);
+            $stm->bindParam("ti",$titre);
+            $stm->bindParam("co",$post);
+            $stm->bindParam("id",$_POST["postIDMODIFIED"]);
+            // $stm->bindParam("po",$filename);
+        }
         $stm->execute();
+        if(isset($_POST["remove-photo"])&& $_POST["remove-photo"]=="yes"){
+            $conn->query("UPDATE post SET photo=NULL WHERE id=".$_POST["postIDMODIFIED"]);
+            // echo "$$$$$$$$$$$@";
+        }
+        
+        header("Location:../home.php");
+
         // $conn->exec($sql);
         // echo $sql;
-        header("Location:../home.php");
     }
     elseif (isset($_GET["postID"])){
 
@@ -86,7 +113,7 @@
                         </form>
                     </ul>
                  </nav>
-                    <form action="#" method="post" class="sign-in-form ">
+                    <form action="#" method="post" class="sign-in-form" enctype="multipart/form-data">
                         <input name="postIDMODIFIED" value=<?php echo $EditPostId?> type="hidden">
                         <div class="info-div">
                             <label for="Titre" class="title-h3">Titre</label>
@@ -96,7 +123,17 @@
                             <label for="Titre" class="title-h3">Titre</label>
                             <textarea type="text"  name="post"  class="sign-in-input post-input post-area"  required><?php echo $result_edit["content"] ?></textarea>
                         </div>
+                        <div class="remove-div">
+                            <label for="Titre" class="title-h3 remove">Remove Photo</span>
+                            <input type="checkbox" name="remove-photo" value="yes">
+                        </div>
+                        <div class="info-div">
+                            <label for="Titre" class="title-h3 update">Update Photo:</label>
+                            <input type="file" name="photo">
+                        </div>
+
                         <button class="btn-submit" type="submit">Modifier</button>
+
 
                     </form>
                 </body>

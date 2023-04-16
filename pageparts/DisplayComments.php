@@ -15,22 +15,22 @@
         $last_name=$result["Last_Name"];
         $first_name=$result["First_Name"];
         $comment=$row3["content"];
-        ?>
         
-            <div class='post-header'>
-                <img src="./images/<?php 
+        
+            echo "<div class='post-header'>
+                <img src='./images/";
                  if($result['profile']){
                      echo $result['profile'];
                     }else{
                     echo 'unknown.png';
     
                 }
-                ?>" class='post-avatar comment-avatar'>
-                    <div class='post-username comment-username'><?php echo $first_name.' '.$last_name."<br><span class='content'>$comment</span><br>" ?>
+                echo "' class='post-avatar comment-avatar'>
+                    <div class='post-username comment-username'>".$first_name.' '.$last_name."<br><span class='content'>$comment</span><br>
                 </div>
-            </div>
+            </div>";
 
-        <?php }
+        }
         echo "</div>"
 
 ?>

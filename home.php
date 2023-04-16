@@ -43,7 +43,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
     <script src="scripts/like.js"></script>
     <script src="scripts/comment.js"></script>
+    <script src="scripts/loadmore.js"></script>
     <script src="scripts/sidebar.js"></script>
+
 
 
 </head>
@@ -72,7 +74,10 @@
             <?php include("./pageparts/right-sidebar.php")?>
         </div>
         <div >
-            <?php include("./pageparts/DisplayHome.php") ?>
+            <div class="posts" id="posts">
+                 <?php //include("./pageparts/DisplayHome.php")/*?>
+
+            </div>
         </div>
         <div class="side-bar" style=" width:100%;height:100%">
             <div class="container">

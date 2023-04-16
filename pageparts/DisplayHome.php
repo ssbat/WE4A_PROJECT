@@ -23,8 +23,20 @@ foreach($stm as $row2){
     $stmLiked=$conn->query($sqlLiked);
     $pressed=false;
 
+    $sqlDisLikes="SELECT * FROM dislikes WHERE post_id=".$row2["id"];
+    $stmDisLikes=$conn->query($sqlDisLikes);
+    $disLikes=$stmDisLikes->rowCount();
+    
+    $sqlDisLiked="SELECT * FROM dislikes WHERE post_id=".$row2["id"].' AND user_id='.$useridConnected.';';
+    $stmDisLiked=$conn->query($sqlDisLiked);
+    $pressed_dislike=false;
+
+
     if($stmLiked->rowCount()>0){
         $pressed=true;
+    }
+    if($stmDisLiked->rowCount()>0){
+        $pressed_dislike=true;
     }
 
 
@@ -71,6 +83,17 @@ foreach($stm as $row2){
                 <button type="button" class="like-icon" id="like-button-<?php echo $row2["id"]?>" onclick="like(<?php echo $row2['id']?>)" 
                 style="<?php if(!$pressed){echo "background-image: url(./images/unliked.png)";}
                     else{echo "background-image: url(./images/liked2.png);"
+                     ;   }
+                    ?>"></button>
+            </form>
+            <form class="form-like">
+                <input name="postid-<?php echo $row2["id"]?>" value=<?php echo $row2["id"]?> type="hidden">
+                <input name="userid-<?php echo $row2["id"]?>" value=<?php echo $useridConnected ?> type="hidden">
+                
+                <span class="like-count" id="dislike-count-<?php echo $row2["id"]?>"><?php echo $disLikes?></span>
+                <button type="button" class="like-icon dislike" id="dislike-button-<?php echo $row2["id"]?>" onclick="dislike(<?php echo $row2['id']?>)" 
+                style="<?php if(!$pressed_dislike){echo "background-image: url(./images/dislike.png)";}
+                    else{echo "background-image: url(./images/dislike-red.png);"
                      ;   }
                     ?>"></button>
             </form>

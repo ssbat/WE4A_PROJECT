@@ -356,16 +356,21 @@ color: #999;
   }
 
   .like-icon {
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
     /* background-image: url("https://www.freepnglogos.com/uploads/like-png/facebook-favorite-hand-like-icon-31.png"); */
     background-repeat: no-repeat;
     background-size: contain;
     margin-right: 5px;
     margin: 0.4em;
     margin-bottom: 0.6em;
+    background-color: white;
   }
 
+  .dislike{
+    width: 28px;
+    height: 28px;
+  }
   .like-text {
     font-size: 14px;
     font-weight: bold;

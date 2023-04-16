@@ -69,8 +69,6 @@ $spec=$result["Specialite"];
         $post_photo=null;
         if($row2['photo']){$post_photo=$row2['photo'];};
 
-
-
         $sqlLikes="SELECT * FROM likes WHERE post_id=".$row2["id"];
         $stmLikes=$conn->query($sqlLikes);
         $Likes=$stmLikes->rowCount();
@@ -78,6 +76,20 @@ $spec=$result["Specialite"];
         $sqlLiked="SELECT * FROM likes WHERE post_id=".$row2["id"].' AND user_id='.$useridConnected.';';
         $stmLiked=$conn->query($sqlLiked);
         $pressed=false;
+
+
+        $sqlDisLikes="SELECT * FROM dislikes WHERE post_id=".$row2["id"];
+        $stmDisLikes=$conn->query($sqlDisLikes);
+        $disLikes=$stmDisLikes->rowCount();
+        
+        $sqlDisLiked="SELECT * FROM dislikes WHERE post_id=".$row2["id"].' AND user_id='.$useridConnected.';';
+        $stmDisLiked=$conn->query($sqlDisLiked);
+        $pressed_dislike=false;
+    
+
+        if($stmDisLiked->rowCount()>0){
+            $pressed_dislike=true;
+        }
 
         if($stmLiked->rowCount()>0){
             $pressed=true;
@@ -130,7 +142,17 @@ $spec=$result["Specialite"];
                     ?>"></button>
             </form>
             <!-- <div class="like-button">comments</div>  -->
-
+            <form class="form-like">
+                <input name="postid-<?php echo $row2["id"]?>" value=<?php echo $row2["id"]?> type="hidden">
+                <input name="userid-<?php echo $row2["id"]?>" value=<?php echo $useridConnected ?> type="hidden">
+                
+                <span class="like-count" id="dislike-count-<?php echo $row2["id"]?>"><?php echo $disLikes?></span>
+                <button type="button" class="like-icon dislike" id="dislike-button-<?php echo $row2["id"]?>" onclick="dislike(<?php echo $row2['id']?>)" 
+                style="<?php if(!$pressed_dislike){echo "background-image: url(./images/dislike.png)";}
+                    else{echo "background-image: url(./images/dislike-red.png);"
+                     ;   }
+                    ?>"></button>
+            </form>
 
             
             <?php

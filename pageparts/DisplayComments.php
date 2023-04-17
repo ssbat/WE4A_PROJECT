@@ -6,7 +6,7 @@
     // if ($infoArray["Successful"]==false){
     //         header("Location:index.php");
     // }
-    echo "<div id='comments-div-".$row2["id"]."'>";
+    echo "<div id='comments-div-".$last_id."'>";
     $sql="SELECT * FROM comments WHERE post_id=".$postid;
     foreach($conn->query($sql) as $row3){
         $sql2="SELECT * FROM users WHERE id=".$row3["user_id"];

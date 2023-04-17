@@ -25,6 +25,14 @@
           header("Location:index.php");
         }
     }
+    $sqlforphoto='SELECT * FROM users WHERE id='.$useridConnected;
+    $resultphoto=$conn->query($sqlforphoto);
+    $resultjava=$resultphoto->fetch();
+    $photoUser=$resultjava['profile'];
+    if(!$photoUser){                   
+        $photoUser='unknown.png';
+
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,6 +51,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
     <script src="scripts/like.js"></script>
     <script src="scripts/comment.js"></script>
+    <script src="scripts/posting.js"></script>
     <script src="scripts/loadmore.js"></script>
     <script src="scripts/sidebar.js"></script>
 
@@ -74,6 +83,16 @@
             <?php include("./pageparts/right-sidebar.php")?>
         </div>
         <div >
+        <div class="post-container">
+            <div class="post-form">
+                <form id="posting-form" enctype="multipart/form-data">
+                <textarea placeholder="What's happening?" id="postContent"></textarea>
+                    <input id="fileupload" type="file" name="fileupload" /> 
+                </form>
+
+                <button onclick="return validatePosting(<?php echo $useridConnected?>,'<?php echo $FirstName.' '.$LastName;?>','<?php echo $photoUser?>')">Post</button>
+        </div>
+         </div>
             <div class="posts" id="posts">
                  <?php //include("./pageparts/DisplayHome.php")/*?>
 

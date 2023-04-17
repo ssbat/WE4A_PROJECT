@@ -18,14 +18,15 @@ $postNumber = $_GET['firstPost'];
 // echo $postNumber;
 
 
-$sql="SELECT * FROM `post` ORDER BY `post`.`date` DESC LIMIT 3 OFFSET ".$postNumber;
+$sql="SELECT * FROM `post` ORDER BY `post`.`date` DESC LIMIT 30 OFFSET ".$postNumber;
 $stm=$conn->query($sql);
 $nopost=false;
 //pour enlever la bouton automatiquement quand il y'a plus des postes
-if($stm->rowCount()==0 or $stm->rowCount()<3){
+if($stm->rowCount()==0 or $stm->rowCount()<30){
     $nopost=true;
 }
 foreach($stm as $row2){
+    $last_id=$row2['id'];
     $sql2='SELECT * FROM users WHERE id='.$row2['user_id'];
     $stm2=$conn->query($sql2);
     $result=$stm2->fetch();

@@ -64,6 +64,8 @@ $spec=$result["Specialite"];
     $sql="SELECT * FROM post WHERE user_id=".$useridPage." ORDER BY `date` DESC";
     echo "<div class='post-container'>";
     foreach($conn->query($sql) as $row2){
+       $last_id=$row2['id'];
+
         $titre=$row2["Titre"];
         $content=$row2["content"];
         $post_photo=null;

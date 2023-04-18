@@ -22,6 +22,7 @@ $postNumber = $_GET['firstPost'];
 $useridPage=$_GET["userid"];
 
 $sql2="SELECT * FROM users WHERE id=".$useridPage;
+
 $stm2=$conn->query($sql2);
 $result=$stm2->fetch();
 
@@ -180,7 +181,7 @@ $spec=$result["Specialite"];
             ; $postNumber++;;
                 ;}
                 if(!$nopost){
-                echo '<button id="morePosts" class="btn-add sign-up a-add" onclick="loadMorePosts('.$postNumber.')">Load More</button></a>';
+                echo '<button id="morePosts" class="btn-add sign-up a-add" onclick="loadMoreMyPosts('.$postNumber.','.$useridPage.')">Load More</button></a>';
                 ;}
                 ?>
                 <!-- <a class='sign-up a-add' href='./post.php'><button id='btn-add'>Add Post</button></a> -->

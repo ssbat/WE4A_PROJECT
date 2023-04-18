@@ -16,4 +16,3 @@ function searchS()
     }
     xhr.send(`similar=${value}`);
 }
-window.onload=searchS;

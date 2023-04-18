@@ -11,5 +11,6 @@ async function loadMorePosts(numberOfPostsAlready) {
 
 }
 
+
 window.onload = loadMorePosts(0);
 console.log("hi");

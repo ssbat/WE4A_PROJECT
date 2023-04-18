@@ -25,6 +25,14 @@
     }
 
     $useridPage=$_GET["userid"];
+    $sqlforphoto='SELECT * FROM users WHERE id='.$useridConnected;
+    $resultphoto=$conn->query($sqlforphoto);
+    $resultjava=$resultphoto->fetch();
+    $photoUser=$resultjava['profile'];
+    if(!$photoUser){                   
+        $photoUser='unknown.png';
+
+    }
 
     
 ?>
@@ -48,10 +56,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Source+Sans+Pro:wght@300;700&display=swap" rel="stylesheet">
     <script src="scripts/like.js"></script>
     <script src="scripts/comment.js"></script>
+    <script src="scripts/posting.js"></script>
+    <script src="scripts/loadmoreMypost.js"></script>
 
     <script src="scripts/sidebar.js"></script>
 
-    
+    <script>
+    go(<?php echo $useridPage?>)
+    window.onload=searchS;
+    </script>
     <body>
 <nav class="nav-div">
             <ul class="nav-ul">
@@ -72,7 +85,22 @@
             <?php include("./pageparts/right-sidebar.php")?>
         </div>
         <div class="middle">
-            <?php include("pageparts/DisplayMyPost.php") ?>
+            <?php include("pageparts/profileInfo.php")?>
+            <?php if ($useridConnected==$useridPage){?>
+            <div class="post-container">
+                <div class="post-form">
+                    <form id="posting-form" enctype="multipart/form-data">
+                    <textarea placeholder="What's happening?" id="postContent"></textarea>
+                        <input id="fileupload" type="file" name="fileupload" /> 
+                    </form>
+
+                    <button onclick="return validatePosting(<?php echo $useridConnected?>,'<?php echo $FirstName.' '.$LastName;?>','<?php echo $photoUser?>')">Post</button>
+                </div>
+            </div>
+            <?php }?>
+            <div class="posts" id="posts">
+                <?php //include("pageparts/DisplayMyPost.php") ?>
+            </div>
         </div>
 
         <div class="side-bar" style=" width:100%;height:100%">
@@ -97,6 +125,5 @@
 
     </div>
       
-        
 </body>
 </html>

@@ -15,14 +15,12 @@ include('./DateTime.php');
 
 $postNumber = $_GET['firstPost'];
 
-// echo $postNumber;
 
-
-$sql="SELECT * FROM `post` ORDER BY `post`.`date` DESC LIMIT 30 OFFSET ".$postNumber;
+$sql="SELECT * FROM `post` ORDER BY `post`.`date` DESC LIMIT 10 OFFSET ".$postNumber;
 $stm=$conn->query($sql);
 $nopost=false;
 //pour enlever la bouton automatiquement quand il y'a plus des postes
-if($stm->rowCount()==0 or $stm->rowCount()<30){
+if($stm->rowCount()==0 or $stm->rowCount()<10){
     $nopost=true;
 }
 foreach($stm as $row2){

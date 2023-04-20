@@ -45,7 +45,7 @@
             <ul class="nav-ul">
                 <li class="nav-li logo"  style="color:white"><a href="home.php">Home</a></li>
                 <li class="nav-li logo" style="color:white" ><a href="./myPage.php?userid=<?php echo $useridConnected?>"><?php echo $FirstName;?></a></li>
-                <li class="nav-li logo" style="color:white">About</li>
+                <li class="nav-li logo" style="color:white"><a href="about.php">About</a></li>
                 
                 <li class="nav-li logo last" style="color:white"><img class="logo-img" src="./images/2.png" ></li>
 

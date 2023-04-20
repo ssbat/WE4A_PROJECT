@@ -10,12 +10,12 @@
     </div>
     <hr>
     <div class="link-bar">
-        <a ><img src="images/about.png"/></a><h5>About</h5>
+        <a href="about.php"><img src="images/about.png"/></a><h5><a href="about.php">About</a></h5>
     </div>
     <hr>
 
     <div class="link-bar">
-        <a ><img src="images/contact.png"/></a><h5>Contact</h5>
+        <a href="contact.php"><img src="images/contact.png"/></a><h5><a href="contact.php">Contact</a></h5>
     </div>
     <hr>
 

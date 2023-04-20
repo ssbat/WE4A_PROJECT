@@ -24,7 +24,6 @@
         }
     }
 
-    $useridPage=$_GET["userid"];
     $sqlforphoto='SELECT * FROM users WHERE id='.$useridConnected;
     $resultphoto=$conn->query($sqlforphoto);
     $resultjava=$resultphoto->fetch();
@@ -54,19 +53,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Source+Sans+Pro:wght@300;700&display=swap" rel="stylesheet">
-    <script src="scripts/like.js"></script>
-    <script src="scripts/comment.js"></script>
-    <script src="scripts/posting.js"></script>
-    <script src="scripts/loadmoreMypost.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;900&display=swap" rel="stylesheet">
 
     <script src="scripts/sidebar.js"></script>
+    <script>window.onload=searchS;</script>
+
+
 
     <script>
-    go(<?php echo $useridPage?>)
-    window.onload=searchS;
     </script>
     <body>
-<nav class="nav-div">
+    <nav class="nav-div">
             <ul class="nav-ul">
                 <li class="nav-li logo"><a href="home.php">Home</a></li>
                 <li class="nav-li logo" ><a href="./myPage.php?userid=<?php echo $useridConnected?>"><?php echo $FirstName;?></a></li>
@@ -80,49 +77,35 @@
                 </form>
             </ul>
     </nav>
-    <div class="main" >
-        <div class="left-bar">
-            <?php include("./pageparts/right-sidebar.php")?>
+    <div  >
+        <div class="intro">
+             <p>Bienvenue sur le UTBMask ! Notre mission est de fournir une plate-forme permettant aux étudiants de se connecter, de partager leurs connaissances et de s'engager dans des discussions significatives sur une variété de sujets. Nous nous efforçons de créer un espace sûr et inclusif où tous les étudiants peuvent se sentir les bienvenus et valorisés.</p>
         </div>
-        <div class="middle">
-            <?php include("pageparts/profileInfo.php")?>
-            <?php if ($useridConnected==$useridPage){?>
-            <div class="post-container">
-                <div class="post-form">
-                    <form id="posting-form" enctype="multipart/form-data">
-                    <textarea placeholder="What's happening?" id="postContent"></textarea>
-                        <input id="fileupload" type="file" name="fileupload" /> 
-                    </form>
-
-                    <button onclick="return validatePosting(<?php echo $useridConnected?>,'<?php echo $FirstName.' '.$LastName;?>','<?php echo $photoUser?>')">Post</button>
-                </div>
+        <div class="features">
+            <div>
+                <h3>Réfléchissez d'abord, puis poser la question</h3>
+                <p>les questions peuvent servir à recentrer, à encadrer, à clarifier, à vérifier, à appuyer et à rediriger</p>
             </div>
-            <?php }?>
-            <div class="posts" id="posts">
-                <?php //include("pageparts/DisplayMyPost.php") ?>
-            </div>
-        </div>
-
-        <div class="side-bar" style=" width:100%;height:100%">
-            <div class="container">
-                <div>
-                        
-                    <div class="user-container" id="user-container">
-                        <h3>Members</h3>    
-                        <form class="search-form">
-                            <input type="text" class="search" id="search-input" onkeyup="searchS()" placeholder="Search...">
-                        </form> 
-                        <div id="result-search" >
-                          
-                        </div>
-                    </div>
-                </div>
-                    
-            </div>
-           
+            <img src="./images/think_first.gif">
             
         </div>
+        <div class="features">
+            <img src="./images/good_ideas.gif" class="left">
+            <div>
+                <h3 class="left">De bonnes idées pour de bonnes causes</h3>
+                <p>Nous aimons créer des choses qui ont un impact positif sur l'UTBM. Nous appelons cela résoudre un problème avec un but.</p>
+            </div>
+            
+        </div>
+        <div class="features">
+            <div>
+                <h3 class="right">Créé par Saad Sbat.</h3>
+                <p>Je suis actuellement étudiant à l’Université de Technologie de Belfort-Montbéliard en première année cycle ingénieur (BAC +3), en vue d'obtenir le diplôme d'ingénieur en informatique.</p>
 
+            </div>
+            <img class="me "src="./images/img23.jpg">
+            
+        </div>
     </div>
       
 </body>

@@ -13,7 +13,7 @@ function validatePosting(author,authorname,authorphoto){
     form.reset();
     var posts_div=document.getElementById('posts')
     if(content.length==0){
-        alert("Comment can't be empty")
+        alert("Post can't be empty")
         return false
     }
     post(author,posts_div,content,authorname,authorphoto,formData);

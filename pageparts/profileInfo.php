@@ -6,7 +6,7 @@ $result=$stm2->fetch();
 
 
 if(!$stm2 or !$result){
-    echo"<center><h1 style='color:red'>Erreur servenue : No user Found </h1></center>";
+    die("<center><h1 style='color:red'>Erreur servenue : No user Found </h1></center>");
     // echo "</div>";
 }else{
 $lastname=$result["Last_Name"];

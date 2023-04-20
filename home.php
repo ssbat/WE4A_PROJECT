@@ -54,6 +54,8 @@
     <script src="scripts/posting.js"></script>
     <script src="scripts/loadmore.js"></script>
     <script src="scripts/sidebar.js"></script>
+    <script>window.onload=searchS;</script>
+
     
 
 
@@ -63,7 +65,7 @@
             <ul class="nav-ul">
                 <li class="nav-li logo"><a href="home.php">Home</a></li>
                 <li class="nav-li logo" ><a href="./myPage.php?userid=<?php echo $useridConnected?>"><?php echo $FirstName;?></a></li>
-                <li class="nav-li logo">About</li>
+                <li class="nav-li logo"><a href="about.php">About</a></li>
                 
                 <li class="nav-li logo last"><img class="logo-img" src="./images/2.png" ></li>
 

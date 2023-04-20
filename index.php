@@ -45,9 +45,9 @@
     </nav> -->
     <nav class="nav-div">
             <ul class="nav-ul">
-                <li class="nav-li logo"  style="color:white"><a href="home.php">Home</a></li>
-                <li class="nav-li logo"  style="color:white"><a> Contact</a></li>
-                <li class="nav-li logo" style="color:white">About</li>
+                <li class="nav-li logo"  style="color:white">Welcome!</li>
+                <li class="nav-li logo"  style="color:white"><a href="sign_up.php">Sign-up</a></li>
+                <!-- <li class="nav-li logo" style="color:white">About</li> -->
                 
                 <li class="nav-li logo last" style="color:white"><img class="logo-img" src="./images/2.png" ></li>                
                 <a><li class="nav-li"  style="color:white">Not a member?</li></a>

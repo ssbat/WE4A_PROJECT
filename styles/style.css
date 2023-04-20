@@ -757,3 +757,157 @@ input[type=file]::file-selector-button {
 #posting-form{
     display: inline;
 }
+
+
+/* contact me */
+
+  .wrapper header{
+    font-size: 22px;
+    font-weight: 600;
+    padding: 20px 30px;
+    border-bottom: 1px solid #ccc;
+  }
+  .wrapper form{
+    margin: 35px 30px;
+  }
+  .wrapper form.disabled{
+    pointer-events: none;
+    opacity: 0.7;
+  }
+  form .dbl-field{
+    display: flex;
+    margin-bottom: 25px;
+    justify-content: space-between;
+  }
+  .dbl-field .field{
+    height: 50px;
+    display: flex;
+    position: relative;
+    width: 98%;
+  }
+  .wrapper form i{
+    position: absolute;
+    top: 50%;
+    left: 18px;
+    color: #ccc;
+    font-size: 17px;
+    pointer-events: none;
+    transform: translateY(-50%);
+  }
+  form .field input,
+  form .message textarea{
+  
+    outline: none;
+    padding: 0 18px 0 48px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  .field input::placeholder,
+  .message textarea::placeholder{
+    color: #ccc;
+  }
+  .field input:focus,
+  .message textarea:focus{
+    padding-left: 47px;
+    border: 2px solid #0D6EFD;
+  }
+  .field input:focus ~ i,
+  .message textarea:focus ~ i{
+    color: #0D6EFD;
+  }
+  form .message{
+    position: relative;
+  }
+  form .message i{
+    top: 30px;
+    font-size: 20px;
+  }
+  form .message textarea{
+    width: 80%;
+    height: 250px;
+    padding: 15px 20px 0 48px;
+  }
+
+  .message textarea:focus{
+    padding-top: 14px;
+  }
+  form .button-area{
+    margin: 25px 0;
+    display: flex;
+    align-items: center;
+  }
+  .button-area button{
+    color: #fff;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 13px 25px;
+    background: #0D6EFD;
+    transition:  0.3s ease;
+  }
+  .button-area button:hover{
+    background: #025ce3;
+  }
+  .button-area span{
+    font-size: 17px;
+    margin-left: 30px;
+    display: none;
+  }
+  
+  /* fin contact me */
+
+
+  /*about us*/
+  .intro p{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    margin:0 2em;
+    padding: 2em 2em 2em 0;
+    width: 62%;
+    font-size: 2.5rem;
+    line-height: 1.12;
+    color: white;
+  }
+  .intro{
+    background-color: #3B71CA;
+  }
+  .features{
+    display: flex;
+  }
+  .features div{
+    width: 50%;
+  }
+  .features img{
+    display: block;
+    margin-left: auto;
+  }
+  .features div {
+    font-family: 'Montserrat', sans-serif;
+    color: #ffa3ba;
+    font-size: 2em;
+    margin-top: 2em;
+    margin-left: .5em;
+  }
+  .features div p{
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+  }
+  .features .left{
+    margin-right: auto;
+  }
+  .features div .left{
+    color: #016ABC;
+  }
+  .features .me{
+    width: 400px;
+    margin-right: 8em;
+    border-radius: 8px;
+  }
+  .features .right{
+    color: #49ceca;
+    /* margin-left: 2em; */
+  }

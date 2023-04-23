@@ -490,6 +490,19 @@ a{
   }
 
 
+.profile-bio{
+  display: flex;
+}
+.profile-bio h3{
+  flex-grow: 1;
+}
+.profile-bio .edit{
+  margin-right: 2em;
+  border:  1px solid #326ccb ;
+  color: #326ccb;
+  border-radius: 8px;
+  font-size: 1em;
+}
 
 
   .user-container h3{
@@ -867,7 +880,7 @@ input[type=file]::file-selector-button {
     margin:0 2em;
     padding: 2em 2em 2em 0;
     width: 62%;
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     line-height: 1.12;
     color: white;
   }

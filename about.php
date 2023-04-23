@@ -56,7 +56,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;900&display=swap" rel="stylesheet">
 
     <script src="scripts/sidebar.js"></script>
-    <script>window.onload=searchS;</script>
+    <!-- <script>window.onload=searchS;</script> -->
 
 
 

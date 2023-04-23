@@ -57,6 +57,18 @@
         }
         $stm->execute();
         if(isset($_POST["remove-photo"])&& $_POST["remove-photo"]=="yes"){
+            $photo_result=$conn->query("SELECT * FROM post WHERE id=".$_POST["postIDMODIFIED"]);
+            $photo=$photo_result->fetch()["photo"];
+            if($photo){
+                if (!unlink("../images/$photo"))
+                    {
+                    die("Error deleting $photo (verifier le path)");
+                    }
+                    else
+                    {
+                        echo ("Deleted $photo");
+                    }
+            }
             $conn->query("UPDATE post SET photo=NULL WHERE id=".$_POST["postIDMODIFIED"]);
             // echo "$$$$$$$$$$$@";
         }

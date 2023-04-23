@@ -38,6 +38,10 @@ $spec=$result["Specialite"];
     <div class="profile-details">
         <div class="profile-bio">
             <h3 class="profile-name"><?php echo $firstname." ".$lastname?></h3>
+           <form action="./editprofile.php">
+               <button class='edit' >Edit</button>
+           </form>
+
         </div>
     </div>
     <div class="desc">

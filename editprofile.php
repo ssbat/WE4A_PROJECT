@@ -1,6 +1,6 @@
 <?php 
+    //connexion BDD
     include("./classes/Dbconn.php");
-
 
     $db=new Dbconn();
     if(!$db->connSuccessful[0]){
@@ -24,6 +24,7 @@
           header("Location:../index.php");
         }
     }
+    //modification du nom ou de la photo
     if(isset($_POST["first_name"]) or isset($_POST["last_name"]) or isset($_FILES["photo"]))
     {
         $first_name=$_POST["first_name"];
@@ -32,15 +33,14 @@
         $filename = $_FILES["photo"]["name"];
         $tempname = $_FILES["photo"]["tmp_name"];
         $folder = "./images/" . $filename;
-        if (move_uploaded_file($tempname, $folder)) {
+        if (move_uploaded_file($tempname, $folder)) {//gestion des erreurs
             echo "<h3>  Image uploaded successfully!</h3>";
         } else {
             echo "<h3>  Failed to upload image!</h3>";
             $filename=null;
         }
 
-        if($filename){
-            // echo "$$$$$$$$";
+        if($filename){//supprimer la photo ancienne
             $photo_result=$conn->query("SELECT * FROM users WHERE id=$useridConnected");
             $photo=$photo_result->fetch()["profile"];
             if($photo){
@@ -53,6 +53,7 @@
                         echo ("Deleted $photo");
                     }
             }
+            //modification de la bdd avec la photo
             $sql="UPDATE users SET First_Name=:fn,Last_Name=:ln,profile=:po WHERE ID=$useridConnected";
             $stm=$conn->prepare($sql);
             $stm->bindParam("fn",$first_name);
@@ -63,6 +64,7 @@
             // $stm->bindParam("id",$_POST["postIDMODIFIED"]);
         }
         else{
+            // modification de la bdd sans la photo
             $sql="UPDATE users SET First_Name=:fn,Last_Name=:ln WHERE ID=$useridConnected";
             $stm=$conn->prepare($sql);
             $stm->bindParam("fn",$first_name);
@@ -71,7 +73,7 @@
             // $stm->bindParam("po",$filename);
         }
         $stm->execute();
-        if(isset($_POST["remove-photo"])&& $_POST["remove-photo"]=="yes"){
+        if(isset($_POST["remove-photo"])&& $_POST["remove-photo"]=="yes"){//cas de suppression de la photo profile
             $photo_result=$conn->query("SELECT * FROM users WHERE id=$useridConnected");
             $photo=$photo_result->fetch()["profile"];
             if($photo){
@@ -85,22 +87,17 @@
                     }
             }
             $conn->query("UPDATE users SET profile=NULL WHERE id=$useridConnected");
-            // echo "$$$$$$$$$$$@";
         }
         
         header("Location:./myPage.php?userid=$useridConnected");
 
-        // $conn->exec($sql);
-        // echo $sql;
     }
     else{
-
+        //recuperation du userid 
         $EditUserID=$useridConnected;
-        // echo $useridConnected."\n";
         $sql="SELECT * FROM users WHERE ID=".$EditUserID;
         
         $result_edit=$conn->query($sql)->fetch();
-        // echo $result_edit["id"];
         if ($result_edit){
             {
                 ?>
@@ -121,6 +118,7 @@
                     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
                 </head>
                 <body style="background-image: url('./images/bg.jpg');">
+                <!-- nav-bar -->
                 <nav class="nav-div">
                     <ul class="nav-ul">
                         <li class="nav-li logo"  style="color:white"><a href="./home.php">Home</a></li>
@@ -129,10 +127,6 @@
                         
                         <li class="nav-li logo last" style="color:white"><img class="logo-img" src="./images/2.png" ></li>
 
-                        <!-- <li class="nav-li center">Home</li> -->
-                        <!-- <li class="nav-li center">Home</li> -->
-
-                        
                         <a><li class="nav-li" style="color:white">Want to sign-out?</li></a>
                         <form action="#" method="post">
                             <input type="hidden" name="logout" value="OK">
@@ -140,6 +134,7 @@
                         </form>
                     </ul>
                  </nav>
+                 <!-- formulation pour modifier les infos du user -->
                     <form action="#" method="post" class="sign-in-form" enctype="multipart/form-data">
                         <input name="userIDMODIFIED" value=<?php echo $EditUserID?> type="hidden">
                         <div class="info-div">
@@ -168,9 +163,7 @@
             <?php
 
             }
-            // else{
-            //     echo "<h1>Dont Even Try!!</h1>";
-            // }
+    
         }
     
     

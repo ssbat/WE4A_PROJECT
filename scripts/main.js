@@ -1,3 +1,5 @@
+// VERIFICATION DU FORMULAIRE SIGNUP
+
 function validateForm(){
 
     const first_name = document.forms["Form"]["firstname"].value;
@@ -7,17 +9,19 @@ function validateForm(){
     const password2= document.forms["Form"]["password2"].value;
     
     formIsVerified=true;
-    
+    //verification prenom
     if (containsNumbers(first_name)){
         document.getElementById("first-name").innerText="A name cannot contain numbers."
         formIsVerified=false;
     }
+    //verification nom
+
     if (containsNumbers(last_name)){
         document.getElementById("last-name").innerText="A name cannot contain numbers."
         formIsVerified=false;
     
     }
-
+    //verification pass
     if(passError(password,password2)){
         console.log("!!!");
         formIsVerified=false;
@@ -42,12 +46,12 @@ function containsNumbers(str){
   }
 function passError(password,password2){
     if (6>password.length || password.length>40){
-        return "Password length must be between 6 ans 40 characters";
+        return "Password length must be between 6 and 40 characters";
     };
     if(password!=password2){
         return "Passwords do not matched";
     }
-    return false;//the pass does not contain errors
+    return false;//the pass does not contain errors :)
 }
 // console.log(containsNumbers("saad2"));
 

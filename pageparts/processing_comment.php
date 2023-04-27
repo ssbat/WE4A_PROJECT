@@ -1,6 +1,10 @@
 <?php
-    include("../classes/Dbconn.php");
+    //AJAX
+    //INSERTION du commentaire dans La bdd
 
+
+    //connexion + login    
+    include("../classes/Dbconn.php");
     $db=new Dbconn();
     if(!$db->connSuccessful[0]){
         die($db->connSuccessful[1]);
@@ -13,6 +17,8 @@
             header("Location:index.php");
     }
 
+
+    //recupere les donnes du commentaire puis l'ajouter dans la bdd
     if (isset($_POST["comment"])){
         $id_post=$_POST["post-id"];
         echo $id_post;

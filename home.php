@@ -93,7 +93,7 @@
             <div class="post-form">
                 <!-- formulaire traité en javascript pour ajouter un post avec/sans une photo (AJAX) -->
                 <form id="posting-form" enctype="multipart/form-data">
-                <textarea placeholder="What's happening?" id="postContent"></textarea>
+                <textarea placeholder="What are you thinking about?" id="postContent"></textarea>
                     <input id="fileupload" type="file" name="fileupload" /> 
                 </form>
                 <button onclick="return validatePosting(<?php echo $useridConnected?>,'<?php echo $FirstName.' '.$LastName;?>','<?php echo $photoUser?>')">Post</button>

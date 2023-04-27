@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 16, 2023 at 01:24 PM
+-- Generation Time: Apr 27, 2023 at 10:44 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -39,26 +39,11 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`id`, `user_id`, `post_id`, `content`) VALUES
-(103, 43, 34, 'dakhil rabak asli'),
-(104, 43, 35, 'kifak ya bro'),
-(105, 41, 34, 'hala ya hala'),
-(106, 41, 34, 'jhkhk'),
-(107, 44, 34, 'hi kif lchabebz'),
-(108, 44, 37, 'mnih enta kif'),
-(109, 44, 37, 'tamenni 3anna 3annak'),
-(110, 41, 38, '3yuni akhi lkbir'),
-(111, 41, 38, 'nchalla kelchi bkheir?'),
-(112, 41, 38, 'tamenni'),
-(113, 41, 38, 'sli'),
-(114, 41, 36, 'kelchi tamem khayi?'),
-(115, 41, 36, 'enta bas tamenni'),
-(116, 41, 34, 'LIEBHERR'),
-(117, 41, 34, 'csc'),
-(118, 41, 40, 'oui'),
-(119, 41, 40, 'non'),
-(120, 41, 40, 'dklfjls'),
-(121, 41, 41, 'gdgdg'),
-(122, 41, 42, 'saad');
+(152, 54, 173, 'oui demain c\'est férié'),
+(153, 54, 172, 'Pour diagonaliser une matrice, une méthode de diagonalisation consiste à calculer ses vecteurs propres et ses valeurs propres'),
+(154, 54, 177, 'Demande à EINSTEIN'),
+(155, 54, 175, 'PARFAIT!'),
+(156, 55, 175, 'FINALEMENT!!');
 
 -- --------------------------------------------------------
 
@@ -78,9 +63,8 @@ CREATE TABLE `dislikes` (
 --
 
 INSERT INTO `dislikes` (`id`, `post_id`, `user_id`, `date`) VALUES
-(49, 41, 41, 2147483647),
-(56, 36, 41, 2147483647),
-(59, 42, 41, 2147483647);
+(125, 172, 53, 2147483647),
+(126, 172, 54, 2147483647);
 
 -- --------------------------------------------------------
 
@@ -100,13 +84,10 @@ CREATE TABLE `likes` (
 --
 
 INSERT INTO `likes` (`id`, `post_id`, `user_id`, `date`) VALUES
-(321, 36, 40, '2023-04-08 01:00:39'),
-(330, 35, 40, '2023-04-08 01:41:50'),
-(331, 34, 42, '2023-04-08 18:38:46'),
-(332, 38, 44, '2023-04-09 21:36:09'),
-(333, 34, 44, '2023-04-09 21:36:13'),
-(338, 41, 41, '2023-04-12 00:49:36'),
-(378, 42, 41, '2023-04-16 13:24:27');
+(447, 173, 54, '2023-04-27 22:02:49'),
+(449, 177, 54, '2023-04-27 22:35:16'),
+(452, 175, 54, '2023-04-27 22:38:27'),
+(454, 177, 55, '2023-04-27 22:43:49');
 
 -- --------------------------------------------------------
 
@@ -116,27 +97,22 @@ INSERT INTO `likes` (`id`, `post_id`, `user_id`, `date`) VALUES
 
 CREATE TABLE `post` (
   `id` int(5) NOT NULL,
-  `Titre` varchar(250) NOT NULL,
   `content` longtext NOT NULL,
   `photo` varchar(80) DEFAULT NULL,
   `user_id` int(11) NOT NULL,
-  `date` datetime DEFAULT current_timestamp()
+  `date` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `post`
 --
 
-INSERT INTO `post` (`id`, `Titre`, `content`, `photo`, `user_id`, `date`) VALUES
-(34, 'hi', 'salut les gars', NULL, 41, '2023-04-08 00:54:24'),
-(35, 'jk', 'jkkl', NULL, 40, '2023-04-08 00:59:39'),
-(36, 'kjk', 'jhkk', NULL, 40, '2023-04-08 01:00:11'),
-(37, 'ya bro', 'kifak', NULL, 43, '2023-04-09 21:09:00'),
-(38, 'sa', 'dakhil rabak asli', NULL, 44, '2023-04-09 21:35:59'),
-(39, 'saad', 'sadsd', NULL, 41, '2023-04-09 23:58:53'),
-(40, 'saad', 'am i the future internee in liebherr', NULL, 41, '2023-04-11 10:54:57'),
-(41, 'aa', 'DAKHIL RABAK', NULL, 41, '2023-04-12 00:49:25'),
-(42, 'hi', 'my future home!', 'tre.jpg', 41, '2023-04-16 00:51:34');
+INSERT INTO `post` (`id`, `content`, `photo`, `user_id`, `date`) VALUES
+(172, 'Bonjour,\r\nPourriez vous m\'aider à diagonaliser une matrice de cette forme?', 'matrice.jpg', 53, '2023-04-27 21:56:17'),
+(173, 'bonjour tout le monde,\r\ndemain on a WE4a ou bien c\'est férié????', 'mark.jpg', 53, '2023-04-27 21:58:08'),
+(174, 'Qlq1 parmi vous à déja fait son stage à dubai?!', 'dubai.jpg', 54, '2023-04-27 22:04:17'),
+(175, 'Je vous annonce que Demain y\'aura un Documentaire dans l\'amphi à 10:00 sur les animaux', 'photo-afrique.jpeg', 54, '2023-04-27 22:06:25'),
+(177, 'Est-ce que qlq1 peut m\'expliquer la notion de dilatation du temps mentionnée dans le film interstellar?!', 'interstellar.jpg', 55, '2023-04-27 22:41:29');
 
 -- --------------------------------------------------------
 
@@ -160,11 +136,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`ID`, `First_Name`, `Last_Name`, `Email`, `PASSWORD`, `profile`, `Gender`, `Specialite`) VALUES
-(40, 'Saad', 'Sbat', 'saad_sbat3@hotmail.com', '0b4e7a0e5fe84ad35fb5f95b9ceeac79', '', 'female', 'Génie informatique'),
-(41, 'Saad', 'Sbat', 'saad_sbat@hotmail.com', '0b4e7a0e5fe84ad35fb5f95b9ceeac79', '', 'male', 'Génie mécanique'),
-(42, 'Noura', 'Hamad', 'noura_sbat@hotmail.com', '0b4e7a0e5fe84ad35fb5f95b9ceeac79', '', 'female', 'Génie industriel'),
-(43, 'Ali', 'Jeha', 'ali@utbm.fr', '0b4e7a0e5fe84ad35fb5f95b9ceeac79', 'Screenshot 2023-04-06 161334.png', 'male', 'Génie mécanique'),
-(44, 'Nathan', 'Cuenot', 'nathan@crunch.fr', '0b4e7a0e5fe84ad35fb5f95b9ceeac79', 'DataExcel.png', 'male', 'Génie énergie');
+(53, 'Nathan', 'Zavada', 'nathan@crunch.com', '875f26fdb1cecf20ceb4ca028263dec6', 'person.png', 'male', 'Génie informatique'),
+(54, 'Saad', 'Sbat', 'saad_sbat@hotmail.com', '0b4e7a0e5fe84ad35fb5f95b9ceeac79', 'profile2.jpg', 'male', 'Génie informatique'),
+(55, 'Laetitia', 'Cuenote', 'laetitia@utbm.fr', 'c1f68ec06b490b3ecb4066b1b13a9ee9', 'person3.jpg', 'female', 'Génie industriel');
 
 --
 -- Indexes for dumped tables
@@ -216,31 +190,31 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=157;
 
 --
 -- AUTO_INCREMENT for table `dislikes`
 --
 ALTER TABLE `dislikes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=127;
 
 --
 -- AUTO_INCREMENT for table `likes`
 --
 ALTER TABLE `likes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=379;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=455;
 
 --
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=178;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `ID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- Constraints for dumped tables

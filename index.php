@@ -56,7 +56,7 @@
         <?php }?>
         <input type="text" placeholder="Username" name="email" for="username" class="sign-in-input">
         <input  type="password" placeholder="Password" name="password"  class="sign-in-input">
-        <p class="note">Password must be at least 8 characters</p>
+        <p class="note">Password must be at least 6 characters</p>
         <button class="btn-submit" type="submit">Submit</button>
     </form>
 

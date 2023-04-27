@@ -1,5 +1,6 @@
-
-console.log("hi");
+// SEARCH SYSTEME
+// TD5
+// deja fait dans le td5
 function searchS()
 {
     var side_div=document.getElementById('result-search')

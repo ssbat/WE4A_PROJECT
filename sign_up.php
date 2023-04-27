@@ -68,7 +68,7 @@
             <small class="last-name" id="last-name"></small>
         </div>
         <!-- email -->
-        <!-- ATTENTION le EMAIL est un champ unique dans la BDD -->
+        <!-- le EMAIL est un champ unique dans la BDD -->
         <div class="info-div">
             <label for="email">Email</label>
             <input type="email" placeholder="Email" name="email" for="username" class="sign-in-input" required>
@@ -102,7 +102,7 @@
         <input type="radio" id="gender" name="gender" value="male" required/> Male  
         <br>
         <input type="radio" id="gender" name="gender" value="female"/> Female <br/>
-
+        
         <!-- ajouter une photo profile -->
         <div class="info-div">
             <label for="Photo">Profile Picture</label>            

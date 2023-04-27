@@ -1,5 +1,9 @@
 <?php 
 
+//PROCESSING_POSTING_AJAX
+
+
+
 include("../classes/Dbconn.php");
 
 $db=new Dbconn();
@@ -13,16 +17,19 @@ $infoArray=verificationLogin();
 if ($infoArray["Successful"]==false){
         header("Location:index.php");
 }
+//so il y'a un post recu
+//c'est REQUEST et non pas POST ou GET car j'ai envoyé à travers ajax un fichier avec le contenu du post
+//c'était la partie la plus compliqué pour moi dans ce projet
+//des dizaines de recherche pour trouver une methode qui me permet d'envoyer un fichier avec autre data seulement en javascript 
 if(isset($_REQUEST['post'])){
     
-    // $filename = $_FILES['file']['name'];
     $content=$_REQUEST['post'];
     if(isset($_FILES['file'])){
         $date=date('Y-m-d H:i:s');
         $filename = $_FILES['file']['name'];
         $tempname = $_FILES['file']["tmp_name"];
         $folder = "../images/" . $filename;
-        if (move_uploaded_file($tempname, $folder)) {
+        if (move_uploaded_file($tempname, $folder)) {//transfere la photo vers le dossier images
             // echo "<h3>  Image uploaded successfully!</h3>";
         } else {
             // die("FRg");
@@ -30,7 +37,7 @@ if(isset($_REQUEST['post'])){
             $filename=null;
         }
     }
-    // echo $time;
+    //execution de la reque
     $sql="INSERT INTO post(content,user_id,photo)VALUES(
         :co,:id,:po
     )";
@@ -41,21 +48,19 @@ if(isset($_REQUEST['post'])){
 
     $stm->execute();
     $last_id = $conn->lastInsertId();
-    // echo $last_id;
-    // $stm->bindParam("da",$date);
+    //recuper le dernier id inserer(ca veut dire le dernier post)
+
     $sql2='SELECT * FROM users WHERE id='.$useridConnected;
-    // echo $sql2;
     $stm2=$conn->query($sql2);
     $result=$stm2->fetch();
     $lastname=$result['Last_Name'];
-    // echo $lastname;
     $firstname=$result['First_Name'];
-    
-    // $titre=$row2['Titre'];
-    // $content=$row2['content'];
     $post_photo=$filename;
-    // if($row2['photo']){$post_photo=$row2['photo'];};
-
+    //apres l'insertion dans la BDD maintenant faut faire des echo pour le post ajouté pour recupere ces echos via 
+    //via javascript puis l'ajouter dans la div qui contient tous les postes
+    
+    
+    //le reste c pareil à la page display (voir les commentaire )
 
     $sqlLikes='SELECT * FROM likes WHERE post_id='.$last_id;
     $stmLikes=$conn->query($sqlLikes);
@@ -176,11 +181,9 @@ if(isset($_REQUEST['post'])){
         </div>
     </div>" 
         ;
-    // header("Location:../myPage.php?userid=".$useridConnected);
 }
 else{
     echo "Erreriefe";
-    // header("Location:../myPage.php?userid=".$useridConnected);
 
 }
 

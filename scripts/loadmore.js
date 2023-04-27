@@ -1,3 +1,6 @@
+
+// LOADMOREPAGE
+// Je me suis renseigné du TD5
 async function loadMorePosts(numberOfPostsAlready) {
 
     const element = document.getElementById('morePosts');

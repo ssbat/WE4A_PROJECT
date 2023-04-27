@@ -1,13 +1,10 @@
 
 
 
-
-
-// Get the like button element
-// const likeButton = document.getElementById('like-button');
-// Add a click event listener to the like button
-
+// SYSTEME DE LIKE
+//AJAX
 function like(postid){
+  // recuperer le postid et le userid de la personne qui a liké
   const postId = document.querySelector('input[name="postid-'+postid+'"]').value;
   const userId = document.querySelector('input[name="userid-'+postid+'"]').value;
   console.log(postId);
@@ -19,19 +16,20 @@ function like(postid){
   console.log(xhr);
   xhr.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      // Update the like count
+      // modifier le nombre des like
       const likeCount = document.getElementById('like-count-'+postid);
       jsonDetails=JSON.parse(xhr.responseText)
       likeCount.textContent = jsonDetails['likes'];
       const icon = document.getElementById('like-button-'+postid);
       console.log(icon);
+      // changement du couleur de like si c'est pressed
       if(jsonDetails["pressed"]){
         icon.style.cssText+='background-image: url(./images/liked2.png)'
         // icon.setattribute('style',')
   
       }
+      // changement du couleur de like si c'est unpressed
       else{
-        // icon.setattribute('style','background-image: url(./images/unliked.png)')
         icon.style.cssText+='background-image: url(./images/unliked.png)'
 
       }

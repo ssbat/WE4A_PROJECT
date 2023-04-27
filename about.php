@@ -1,6 +1,6 @@
 <?php 
+    //connextion DBB+login verification
     include("classes/Dbconn.php");
-
    $db=new Dbconn();
    if(!$db->connSuccessful[0]){
        die($db->connSuccessful[1]);
@@ -24,14 +24,7 @@
         }
     }
 
-    $sqlforphoto='SELECT * FROM users WHERE id='.$useridConnected;
-    $resultphoto=$conn->query($sqlforphoto);
-    $resultjava=$resultphoto->fetch();
-    $photoUser=$resultjava['profile'];
-    if(!$photoUser){                   
-        $photoUser='unknown.png';
 
-    }
 
     
 ?>
@@ -45,6 +38,9 @@
     <title>Home</title>
     <link href="styles/style.css" rel="stylesheet">
 
+
+    <!-- Des fonts importer de google font -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
@@ -56,13 +52,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;900&display=swap" rel="stylesheet">
 
     <script src="scripts/sidebar.js"></script>
-    <!-- <script>window.onload=searchS;</script> -->
 
 
 
     <script>
     </script>
     <body>
+        <!-- navbar -->
     <nav class="nav-div">
             <ul class="nav-ul">
                 <li class="nav-li logo"><a href="home.php">Home</a></li>
@@ -77,7 +73,8 @@
                 </form>
             </ul>
     </nav>
-    <div  >
+    <!-- div about main information -->
+    <div style="width: 80%; margin:0 auto"  >
         <div class="intro">
              <p>Bienvenue sur le UTBMask ! Notre mission est de fournir une plate-forme permettant aux étudiants de se connecter, de partager leurs connaissances et de s'engager dans des discussions significatives sur une variété de sujets. Nous nous efforçons de créer un espace sûr et inclusif où tous les étudiants peuvent se sentir les bienvenus et valorisés.</p>
         </div>

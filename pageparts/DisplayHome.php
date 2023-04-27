@@ -15,10 +15,10 @@
 include('./DateTime.php');//Importation Des fonctions utiles pour le temps et les dates des postes
 
 
-$postNumber = $_GET['firstPost'];//savoir le offset pour afficher 10 postes différents à chaque appuie sur le bouton loadmore 
+$postNumber = $_GET['firstPost'];//savoir le offset pour afficher 3 postes différents à chaque appuie sur le bouton loadmore 
 
 
-$sql="SELECT * FROM `post` ORDER BY `post`.`date` DESC LIMIT 10 OFFSET ".$postNumber;//requete pour récuper 10 postes (de plus récents au plus anciens)
+$sql="SELECT * FROM `post` ORDER BY `post`.`date` DESC LIMIT 3 OFFSET ".$postNumber;//requete pour récuper 10 postes (de plus récents au plus anciens)
 $stm=$conn->query($sql);//execution de la requete
 if(!$stm){//au cas d'erreur
     die("Erreur requete des pages!");
@@ -26,7 +26,7 @@ if(!$stm){//au cas d'erreur
 //pour faire disparaitre le bouton "load more" quand il y'a plus des postes dans la DB
 $nopost=false;
 //pour enlever la bouton automatiquement quand il y'a plus des postes
-if($stm->rowCount()==0 or $stm->rowCount()<10){
+if($stm->rowCount()==0 or $stm->rowCount()<3){
     $nopost=true;//il y'a plus des postes
 }
 foreach($stm as $postdetail){//parcourir les postes

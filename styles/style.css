@@ -1,22 +1,14 @@
 body{
-    /* background-color: #6e3eff; */
     height:100%;
     box-sizing: border-box;
-
-    /* background-image: url("../images/bg.jpg"); */
     margin: 0;
 
 }
-
+/* Style nav-bar */
 nav li{
     color:rgb(170, 170, 170);
-    /* color: ; */
 }
 
-.nav-div{
-    /* color:rgb(170, 170, 170); */
-    /* color: white; */
-}
 .nav-ul{
     display: flex;
     list-style: none;
@@ -32,19 +24,17 @@ nav li{
     transition: .5s;
 }
 .last{
-    /* justify-self: center; */
     text-align: center;
     flex-grow: 1;
 }
 a:visited {
-    /* color: white; */
     color: inherit;
     text-decoration: none;
-    /* color:black; */
 }
 a{
     text-decoration: none;
 }
+/* style logo */
 .logo{
     justify-self: flex-start;
     margin:0 1em;
@@ -73,12 +63,15 @@ a{
     color: white;
     background-color: #3B71CA;
 }
+/* display grid pour la div qui contients le left-bar main right-bar  */
 .main{
     display: grid;
+                   /* left-bar main right-bar */
     grid-template-columns: 20% 65% 15%;
     background-color: white;
     margin: 0;
     background-color: #eded;
+    height: 100vh;
 }
 .title-h1{
     text-align: center;
@@ -93,7 +86,8 @@ a{
     color: #2d2d2d;
     color: white;
 }
-
+/* style pour les formulaires */
+/* signin+signup */
 .sign-in-form{
     width: fit-content;
     margin: 0 auto;
@@ -142,6 +136,7 @@ a{
     background-color: #52389e;
     transition: 0.5s;
 }
+
 .info-div label{
     display: block;
 }
@@ -166,7 +161,7 @@ form small,.error{
 }
 
 
-
+/* style pour le post */
 
 .btn-signout,#btn-add{
     background: none;
@@ -256,6 +251,7 @@ color: rgb(40, 161, 70);
     border-radius: 50%;
     margin-right: 10px;
 }
+/* style pour le commentaire  */
 .comment-avatar{
     width: 40px;
     height: 40px;
@@ -272,6 +268,8 @@ color: rgb(40, 161, 70);
   padding: .3em;
   transition: 1s;
 }
+/* style pour le commentaire  */
+
 .comment-username{
     align-self: flex-start;
     display: block;
@@ -290,7 +288,7 @@ color: #999;
 }
 
 
-
+/* style pour le like et le dislike */
 .like-edit-bar {
     display: flex;
     align-items: center;
@@ -317,18 +315,7 @@ color: #999;
     background-color: #f9f9f9;
   }
 
-  /* .edit-button {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 5px 10px;
-    color: #999;
-    font-size: 0.8em;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 50%;
-    text-align: center;
-  } */
+/* //edit-boutton */
 
   .edit-button:hover {
     background-color: #f9f9f9;
@@ -377,6 +364,7 @@ color: #999;
     width: 28px;
     height: 28px;
   }
+  /* style pour le boutton delete */
 .trash{
   background-image: url("../images/trash.png");
 }
@@ -409,7 +397,7 @@ color: #999;
 
 
 
-/* sidebar */
+/* style sidebar  */
 .sidebar {
     margin-top: 3em;
     display: flex;
@@ -428,7 +416,6 @@ color: #999;
   .user img {
     width: 75px;
     height: 75px;
-    /*border-radius: 50%;*/
     margin-right: 10px;
   }
 
@@ -450,7 +437,9 @@ color: #999;
 
 
 /*nouvelle*/
-
+/* le style des utilisateur afficher dans le right bar  */
+/* ce style je l'ai cherché sur internet */
+/* source:https://www.bootdey.com/snippets/view/light-user-list */
 a{
     color: inherit;
 }
@@ -539,6 +528,7 @@ a{
 
 
   /*fin right bar*/
+/* left bar style */
 
 .left-bar{
     background-color:#326ccb ;
@@ -679,10 +669,12 @@ margin-top: -5em;
     font-weight: 900;
 }
 
+/* style pour le systeme de recherche */
 
 .search-form{
     width: 100%;
 }
+
 
 .search{
     display: block;
@@ -702,7 +694,7 @@ margin-top: -5em;
     margin-bottom: 8px;
 
   }
-
+/* style pour ajouter un fichier */
 input[type=file]::file-selector-button {
     background-color: inherit;
     color: white;
@@ -734,7 +726,7 @@ input[type=file]::file-selector-button {
     align-self: flex-start;
 }
 
-
+/* div qui contient les posts */
 .post-container {
     border-radius: 8px;
     margin:2em 0em;
@@ -931,5 +923,4 @@ input[type=file]::file-selector-button {
   }
   .features .right{
     color: #49ceca;
-    /* margin-left: 2em; */
   }

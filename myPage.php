@@ -58,6 +58,8 @@
     <script src="scripts/comment.js"></script>
     <script src="scripts/posting.js"></script>
     <script src="scripts/loadmoreMypost.js"></script>
+    <script src="scripts/delete.js"></script>
+
 
     <script src="scripts/sidebar.js"></script>
 
@@ -71,7 +73,6 @@
                 <li class="nav-li logo"><a href="home.php">Home</a></li>
                 <li class="nav-li logo" ><a href="./myPage.php?userid=<?php echo $useridConnected?>"><?php echo $FirstName;?></a></li>
                 <li class="nav-li logo"><a href="about.php">About</a></li>
-                
                 <li class="nav-li logo last"><img class="logo-img" src="./images/2.png" ></li>
                 <a><li class="nav-li">Want to sign-out?</li></a>
                 <form action="#" method="post">
@@ -99,7 +100,7 @@
             </div>
             <?php }?>
             <div class="posts" id="posts">
-                <?php //include("pageparts/DisplayMyPost.php") ?>
+                <?php ?>
             </div>
         </div>
 

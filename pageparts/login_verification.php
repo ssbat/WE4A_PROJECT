@@ -6,8 +6,8 @@
         if (isset($_POST["email"]) and isset($_POST["password"])){
             
             $logAttempted=true;
-            $email=$_POST["email"];
-            $password=md5($_POST["password"]);
+            $email=SecurizeString( $_POST["email"]);
+            $password=md5(SecurizeString($_POST["password"]));
         }
         elseif (isset($_COOKIE["email"]) and isset($_COOKIE["password"])){
             $logAttempted=true;
@@ -19,12 +19,7 @@
         }
         $logverif=false;
         if ($logAttempted){
-            // if($email=="saad" and $password==md5("FuckyouBenoit")){
-            //     $logverif=true;
-            //     setcookie('email', $email, time()+3600*24, '/', '', false, true);
-            //     setcookie('password', $password, time()+3600*24, '/', '', false, true);
-            // } 
-            // $conn
+   
             $sql="SELECT * FROM users WHERE Email=:E AND PASSWORD =:Pa";
             $stm=$conn->prepare($sql);
             $stm->bindParam("Pa",$password);
@@ -38,16 +33,8 @@
                 $FirstName=$row["First_Name"];
                 $LastName=$row["Last_Name"];
                 $useridConnected=$row["ID"];
-                // setcookie('FirstName',$row["First_Name"] , time()+3600*24, '/', '', false, true);
                 setcookie('LastName',$row["Last_Name"] , time()+3600*24, '/', '', false, true);
-                
-                // setcookie('LastName',$row["Last_Name"] , time()+3600*24, '/', '', false, true);
-
-
-                // setcookie('password', $password, time()+3600*24, '/', '', false, true);
-
             }
-            // $stm->bindParam(':ln', $_POST['Lastname']);
             
             else{
                 $logverif=false;

@@ -24,7 +24,7 @@ function comment(post_id,author,comments_div,content,authorname,authorphoto){
    
     xhr.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-    div="<div class='post-header'><img src='./images/"+authorphoto+"' class='post-avatar comment-avatar'><div class='post-username comment-username'>"+authorname+"<br><span class='content'>"+content+"</span><br>"+"</div> </div>";
+    div="<div class='post-header'><img src='./images/"+authorphoto+"' class='post-avatar comment-avatar'><div class='post-username comment-username'><a href='./myPage.php?userid="+author+"'>"+authorname+"</a><br><span class='content'>"+content+"</span><br>"+"</div> </div>";
     comments_div.innerHTML+=div
         }
     }

@@ -26,7 +26,6 @@
     }
     if(isset($_POST["postIDMODIFIED"]))
     {
-        $titre=$_POST["titre"];
         $post=$_POST["post"];
         $filename = $_FILES["photo"]["name"];
         $tempname = $_FILES["photo"]["tmp_name"];
@@ -40,17 +39,15 @@
 
         if($filename){
             // echo "$$$$$$$$";
-            $sql="UPDATE post SET Titre=:ti,content=:co,photo=:po WHERE id=:id";
+            $sql="UPDATE post SET content=:co,photo=:po WHERE id=:id";
             $stm=$conn->prepare($sql);
-            $stm->bindParam("ti",$titre);
             $stm->bindParam("co",$post);
             $stm->bindParam("id",$_POST["postIDMODIFIED"]);
             $stm->bindParam("po",$filename);
         }
         else{
-            $sql="UPDATE post SET Titre=:ti,content=:co WHERE id=:id";
+            $sql="UPDATE post SET content=:co WHERE id=:id";
             $stm=$conn->prepare($sql);
-            $stm->bindParam("ti",$titre);
             $stm->bindParam("co",$post);
             $stm->bindParam("id",$_POST["postIDMODIFIED"]);
             // $stm->bindParam("po",$filename);
@@ -127,27 +124,23 @@
                  </nav>
                     <form action="#" method="post" class="sign-in-form" enctype="multipart/form-data">
                         <input name="postIDMODIFIED" value=<?php echo $EditPostId?> type="hidden">
-                        <div class="info-div">
-                            <label for="Titre" class="title-h3">Titre</label>
-                            <input type="text" placeholder="Titre" name="titre" class="sign-in-input post-input" value=<?php echo $result_edit["Titre"] ?> required>
-                        </div>
-                        <div class="info-div">
-                            <label for="Titre" class="title-h3">Titre</label>
+
+                        <div class="info-div div-con">
+                            <label for="Content" class="title-h3 ">Content:</label>
                             <textarea type="text"  name="post"  class="sign-in-input post-input post-area"  required><?php echo $result_edit["content"] ?></textarea>
                         </div>
                         <div class="remove-div">
-                            <label for="Titre" class="title-h3 remove">Remove Photo</span>
+                            <label for="remove-photo" class="title-h3 remove">Remove Photo</span>
                             <input type="checkbox" name="remove-photo" value="yes">
                         </div>
                         <div class="info-div">
-                            <label for="Titre" class="title-h3 update">Update Photo:</label>
+                            <label for="Update photo" class="title-h3 update">Update Photo:</label>
                             <input type="file" name="photo">
                         </div>
 
                         <button class="btn-submit" type="submit">Modifier</button>
-
-
                     </form>
+
                 </body>
                 </html>
             <?php

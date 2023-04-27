@@ -16,3 +16,4 @@ function searchS()
     }
     xhr.send(`similar=${value}`);
 }
+

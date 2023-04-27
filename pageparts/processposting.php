@@ -14,8 +14,6 @@ if ($infoArray["Successful"]==false){
         header("Location:index.php");
 }
 if(isset($_REQUEST['post'])){
-    $titre="hi";
-
     
     // $filename = $_FILES['file']['name'];
     $content=$_REQUEST['post'];
@@ -27,16 +25,16 @@ if(isset($_REQUEST['post'])){
         if (move_uploaded_file($tempname, $folder)) {
             // echo "<h3>  Image uploaded successfully!</h3>";
         } else {
+            // die("FRg");
             // echo "<h3>  Failed to upload image!</h3>";
             $filename=null;
         }
     }
     // echo $time;
-    $sql="INSERT INTO post(Titre,content,user_id,photo)VALUES(
-        :ti,:co,:id,:po
+    $sql="INSERT INTO post(content,user_id,photo)VALUES(
+        :co,:id,:po
     )";
     $stm=$conn->prepare($sql);
-    $stm->bindParam("ti",$titre);
     $stm->bindParam("co",$content);
     $stm->bindParam("id",$useridConnected);
     $stm->bindParam('po',$filename);
@@ -85,7 +83,7 @@ if(isset($_REQUEST['post'])){
     // $result->rowCount()
     // $resultLikes=$stmLikes->fetch();
 
-    echo "<div class='post'>
+    echo "<div class='post' id=".$last_id.">
         <div class='post-header'>
             <img src='./images/";
             if($result['profile']){
@@ -95,7 +93,7 @@ if(isset($_REQUEST['post'])){
     }
             echo"' class='post-avatar'>
             <div>
-                <div class='post-username'>".$FirstName.' '.$LastName." </div>
+                <div class='post-username'><a href='./myPage.php?userid=".$useridConnected."'>".$FirstName.' '.$LastName."</a> </div>
                 <div class='post-handle'><span > ● now</span></div>
             
             </div>
@@ -145,6 +143,8 @@ if(isset($_REQUEST['post'])){
                 <input type='hidden' name='postID'value=".$last_id.">
                 <button class='edit' >Edit</button>
             </form>";
+            echo "<button type='button' class='like-icon trash' id='trash-button-".$last_id."' onclick='trash(".$last_id.")'></button>";
+
              
         echo "</div>
         <hr>

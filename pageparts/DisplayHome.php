@@ -1,84 +1,98 @@
 <?php
+    //importation du classe Dbconn et vérification du log-in
     include("../classes/Dbconn.php");
     $db=new Dbconn();
-    if(!$db->connSuccessful[0]){
-        die($db->connSuccessful[1]);
+    if(!$db->connSuccessful[0]){//si il y'a une erreur
+        die($db->connSuccessful[1]);//arretez le programme avec l'affichage de l'erreur 
     }
     $conn=$db->conn;
     include("login_verification.php");
     $infoArray=verificationLogin();
 
-    if ($infoArray["Successful"]==false){
+    if ($infoArray["Successful"]==false){//si le log-in est faux,redirection vers la page de log-in
             header("Location:index.php");
     }
-include('./DateTime.php');
-
-$postNumber = $_GET['firstPost'];
+include('./DateTime.php');//Importation Des fonctions utiles pour le temps et les dates des postes
 
 
-$sql="SELECT * FROM `post` ORDER BY `post`.`date` DESC LIMIT 10 OFFSET ".$postNumber;
-$stm=$conn->query($sql);
+$postNumber = $_GET['firstPost'];//savoir le offset pour afficher 10 postes différents à chaque appuie sur le bouton loadmore 
+
+
+$sql="SELECT * FROM `post` ORDER BY `post`.`date` DESC LIMIT 10 OFFSET ".$postNumber;//requete pour récuper 10 postes (de plus récents au plus anciens)
+$stm=$conn->query($sql);//execution de la requete
+if(!$stm){//au cas d'erreur
+    die("Erreur requete des pages!");
+}
+//pour faire disparaitre le bouton "load more" quand il y'a plus des postes dans la DB
 $nopost=false;
 //pour enlever la bouton automatiquement quand il y'a plus des postes
 if($stm->rowCount()==0 or $stm->rowCount()<10){
-    $nopost=true;
+    $nopost=true;//il y'a plus des postes
 }
-foreach($stm as $row2){
-    $last_id=$row2['id'];
-    $sql2='SELECT * FROM users WHERE id='.$row2['user_id'];
+foreach($stm as $postdetail){//parcourir les postes
+    //pour chaque poste on recupere le id de l'auteur et le contenu du post et la date et le nombre des like/dislike
+   
+   //de id de l'auteur on recupere son nom/prenom 
+    $last_id=$postdetail['id'];
+    $sql2='SELECT * FROM users WHERE id='.$postdetail['user_id'];
     $stm2=$conn->query($sql2);
     $result=$stm2->fetch();
     $lastname=$result['Last_Name'];
     $firstname=$result['First_Name'];
-    
-    $titre=$row2['Titre'];
-    $content=$row2['content'];
+   
+    //recuperation du contenu du post et de la photo si y'en a
+    $content=$postdetail['content'];
     $post_photo=null;
-    if($row2['photo']){$post_photo=$row2['photo'];};
+    if($postdetail['photo']){$post_photo=$postdetail['photo'];};
 
-
-    $sqlLikes='SELECT * FROM likes WHERE post_id='.$row2['id'];
+    
+    //recuperation du nombre des likes du post 
+    $sqlLikes='SELECT * FROM likes WHERE post_id='.$postdetail['id'];
     $stmLikes=$conn->query($sqlLikes);
     $Likes=$stmLikes->rowCount();
-    
-    $sqlLiked='SELECT * FROM likes WHERE post_id='.$row2['id'].' AND user_id='.$useridConnected.';';
+    //cette requete est pour savoir si la personne connectée à liker ou non (car le couleur du like va changer)
+    $sqlLiked='SELECT * FROM likes WHERE post_id='.$postdetail['id'].' AND user_id='.$useridConnected.';';
     $stmLiked=$conn->query($sqlLiked);
     $pressed=false;
+    if($stmLiked->rowCount()>0){//si le rowCount() est 1 alors qu'il y'a un résultat pour la requete => la personne connecté à liker
+        $pressed=true;
+    }
 
-    $sqlDisLikes='SELECT * FROM dislikes WHERE post_id='.$row2['id'];
+   //meme chose pour le dislike
+    $sqlDisLikes='SELECT * FROM dislikes WHERE post_id='.$postdetail['id'];
     $stmDisLikes=$conn->query($sqlDisLikes);
     $disLikes=$stmDisLikes->rowCount();
     
-    $sqlDisLiked='SELECT * FROM dislikes WHERE post_id='.$row2['id'].' AND user_id='.$useridConnected.';';
+    $sqlDisLiked='SELECT * FROM dislikes WHERE post_id='.$postdetail['id'].' AND user_id='.$useridConnected.';';
     $stmDisLiked=$conn->query($sqlDisLiked);
     $pressed_dislike=false;
 
 
-    if($stmLiked->rowCount()>0){
-        $pressed=true;
-    }
     if($stmDisLiked->rowCount()>0){
         $pressed_dislike=true;
     }
-    // $result->rowCount()
-    // $resultLikes=$stmLikes->fetch();
 
-    echo "<div class='post'>
-        <div class='post-header'>
-            <img src='./images/";
+    //la div post:
+    echo "<div class='post' id=".$postdetail['id'].">
+        <div class='post-header'>";
+        //affichage de l'avatar   
+        echo "<img src='./images/";
             if($result['profile']){
-            echo $result['profile'];
+            echo $result['profile'];//l'avatar si le user en a
             }else{
-            echo 'unknown.png';
+            echo 'unknown.png';//sinon la photo unknown
     }
-            echo"' class='post-avatar'>
-            <div>
-                <div class='post-username'>".$firstname.' '.$lastname." </div>
-                <div class='post-handle'><span > ● ".getDateTimeDifferenceString($row2['date'])."</span></div>
+            echo"' class='post-avatar'>";
+           
+            //affichage du nom/prenom et le temps ecoulé depuis la publication de ce post(getdateTimedifferenceString)
+            echo "<div>
+                <div class='post-username'><a href='./myPage.php?userid=".$postdetail['user_id']."'>".$firstname.' '.$lastname."</a> </div>
+                <div class='post-handle'><span > ● ".getDateTimeDifferenceString($postdetail['date'])."</span></div>
             
             </div>
-        </div>
-       <div class='post-body'>
+        </div>";
+        //affichage du contenue avec la photo si y'en a 
+       echo "<div class='post-body'>
             <p style='word-wrap: break-word'>".$content."</p>";
              if($post_photo){ 
             echo "<img src='./images/".$post_photo."' alt='Tweet image' class='tweet-image'>"
@@ -87,20 +101,22 @@ foreach($stm as $row2){
         <div class='like-edit-bar'>
             <form class='form-like'>";
                 
-            
+            //affichage du nombre des likes et changement du couleur de like au cas ou c'est liker par la personne connectée
                 $like_etat=null;
                 if(!$pressed){$like_etat='background-image: url(./images/unliked.png)';}
                     else{$like_etat='background-image: url(./images/liked2.png);'
                      ;   }
+                //des données utile pour ajax car le systeme de post et du commentaire et du likes est avec AJAX,PAS BESOIN DE rafraichir  LA PAGE !!! :-)
+                echo "<input name='postid-".$postdetail['id']."' value=".$postdetail['id']." type='hidden'>
+                <input name='userid-".$postdetail['id']."' value=".$useridConnected." type='hidden'>";
                 
-                echo "<input name='postid-".$row2['id']."' value=".$row2['id']." type='hidden'>
-                <input name='userid-".$row2['id']."' value=".$useridConnected." type='hidden'>
-                
-                <span class='like-count' id='like-count-".$row2['id']."'>".$Likes."</span>
-                <button type='button' class='like-icon' id='like-button-".$row2['id']."' onclick='like(". $row2['id'].")' 
+                //affichage du nombre de likes
+                echo "<span class='like-count' id='like-count-".$postdetail['id']."'>".$Likes."</span>
+                <button type='button' class='like-icon' id='like-button-".$postdetail['id']."' onclick='like(". $postdetail['id'].")' 
                 style='".$like_etat."'></button>
-            </form>
-            <form class='form-like'>";
+            </form>";
+            //pour le dislike c'est pareil
+            echo "<form class='form-like'>";
             
                 $dislike_etat=null;
             if(!$pressed_dislike){$dislike_etat='background-image: url(./images/dislike.png)';}
@@ -108,54 +124,59 @@ foreach($stm as $row2){
                      ;   }
                     
                 
-                echo "<input name='postid-".$row2['id']."' value='".$row2['id']."' type='hidden'>
-                <input name='userid-".$row2['id']."' value=".$useridConnected."' type='hidden'>
+                echo "<input name='postid-".$postdetail['id']."' value='".$postdetail['id']."' type='hidden'>
+                <input name='userid-".$postdetail['id']."' value=".$useridConnected."' type='hidden'>
                 
-                <span class='like-count' id='dislike-count-".$row2['id']."'>".$disLikes."</span>
-                <button type='button' class='like-icon dislike' id='dislike-button-".$row2['id']."' onclick='dislike(".$row2["id"].")' 
+                <span class='like-count' id='dislike-count-".$postdetail['id']."'>".$disLikes."</span>
+                <button type='button' class='like-icon dislike' id='dislike-button-".$postdetail['id']."' onclick='dislike(".$postdetail["id"].")' 
                 style= '".$dislike_etat."' ></button>
             </form>";
+           
+
+        //un bouton edit pour modifier le post qui s'affiche seulement si l'auteur du post est celui qui est connecté
+            if ($useridConnected==$postdetail['user_id']){
             
-            
-            if ($useridConnected==$row2['user_id']){
-            
-            echo "<form class='like-button' method='get' action='./pageparts/editPost.php'>
-                <input type='hidden' name='postID'value=".$row2['id'].">
+            echo "<form class='like-button' method='get' action='./pageparts/editPost.php'>";
+            //des input "hidden" pour la processus de modification,postdetail[id]c'est le id du post
+            echo" <input type='hidden' name='postID'value=".$postdetail['id'].">
                 <button class='edit' >Edit</button>
             </form>";
-             };
-        echo "</div>
-        <hr>
-        <div class='comments' id='comments-".$row2['id']."'>";
+            //supprimer un post (encore avec AJAX)
+            echo "<button type='button' class='like-icon trash' id='trash-button-".$postdetail['id']."' onclick='trash(".$postdetail["id"].")'></button>"; };
+        echo "</div><hr>";
+
+        //Les commentaires/reponses du post
+        echo "<div class='comments' id='comments-".$postdetail['id']."'>";
               
-                $postid=$row2['id'];
+                $postid=$postdetail['id'];
                 include('./DisplayComments.php');
-                
+                //après l'affichage des commentaires
+                //la section d'ecrire un commentaire(AJAX):
+                //des donnes à recupere pour appeler la fonction qui va faire l'ajax de commenter
                 $sqlforphotoandname='SELECT * FROM users WHERE id='.$useridConnected;
                 $resultphotoandname=$conn->query($sqlforphotoandname);
                 $resultjava=$resultphotoandname->fetch();
-                $photoJava=$resultjava['profile'];
                 $firstJava=$resultjava['First_Name'];
                 $lastJava=$resultjava['Last_Name'];
                 $firstandLast=$firstJava.' '.$lastJava;
+                $photoJava=$resultjava['profile'];
                 if(!$photoJava){                   
                    $photoJava='unknown.png';
 
                }
-             
-            echo "<div  class='post-comment' id='post-comment-".$row2['id']."' >
-                        
-            <!-- <input  name='comment' > -->
-                        <small class='error' id='error-".$row2['id']."'></small>
-                        <input  name='comment' id='cmnt-".$row2['id']."' >
-                        <input name='post-id' value=".$row2['id']." type='hidden'>
-                        <button type='submit' class='btn-cmnt' onclick=\"";echo "return validateComment("; echo $row2['id'].",";echo $useridConnected.",'";echo $firstandLast;echo "','";echo $photoJava."')\">Post comment</button>
+             //section ecrire un commentaire
+            echo "<div  class='post-comment' id='post-comment-".$postdetail['id']."' >
+                <small class='error' id='error-".$postdetail['id']."'></small>
+                <input  name='comment' id='cmnt-".$postdetail['id']."' >
+                <input name='post-id' value=".$postdetail['id']." type='hidden'>";
+                //boutton qui appelle la fonction validatecomment qui verifie la commentaire puis elle fait l'AJAX necessaire
+                echo "<button type='submit' class='btn-cmnt' onclick=\"";echo "return validateComment("; echo $postdetail['id'].",";echo $useridConnected.",'";echo $firstandLast;echo "','";echo $photoJava."')\">Post comment</button>
             </div>
         </div>
     </div>" 
-        ; $postNumber++;;
+        ; $postNumber++;;//j'increment le nombre de postes (pour le loadmore)
             ;}
-            if(!$nopost){
+            if(!$nopost){//si il y'a encore des post,afficher le boutton loadmore
             echo '<button id="morePosts" class="btn-add sign-up a-add" onclick="loadMorePosts('.$postNumber.')">Load More</button></a>';
             ;}
             ?>
